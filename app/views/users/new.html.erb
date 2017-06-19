@@ -1,10 +1,10 @@
 <%= from_for @new do |new| %>
   <p>
     <%= new.label :login_id %><br>
-    <%= new.text_find :login_id %><br>
+    <%= new.text_field :login_id %><br>
   </p>
     <%= new.label :name %><br>
-    <%= new.label :name %>
+    <%= new.text_field :name %>
   <p>
     <%= new.submit %>
   </p>
