@@ -1,0 +1,95 @@
+[33mcommit 3d3f7d8a38711bcd92abc91a9551cef3574c33da[m
+Merge: 74e1872 2322284
+Author: ryuuya <ryuuyamh@yahoo.co.jp>
+Date:   Mon Jun 19 12:08:28 2017 +0900
+
+    Merge pull request #16 from ryuuya/14-create-db
+    
+    plansテーブル作成
+
+[33mcommit 74e1872e7c1c9881ef77563bfa6084d8a07d70e8[m
+Merge: 0de5744 9bd0bf7
+Author: ryuuya <ryuuyamh@yahoo.co.jp>
+Date:   Mon Jun 19 12:07:21 2017 +0900
+
+    Merge pull request #15 from ryuuya/12-add-new
+    
+    usersのコントローラー作成
+
+[33mcommit 23222842e1c65bd4898ad96aeebb3d9bae91abb0[m
+Author: vagrant <vagrant@vagrant.vm>
+Date:   Mon Jun 19 03:03:12 2017 +0000
+
+    plansテーブル作成
+
+[33mcommit 9bd0bf74ab9aea31ec3789b1acea90343c50e32a[m
+Author: Your Name <you@example.com>
+Date:   Mon Jun 19 02:41:50 2017 +0000
+
+    usersのコントローラー作成
+
+[33mcommit 0de57446ea82c659037998c71bc780fd9d4ffb41[m
+Merge: ca3d123 e4d6f7b
+Author: ryuuya <ryuuyamh@yahoo.co.jp>
+Date:   Mon Jun 19 11:37:44 2017 +0900
+
+    Merge pull request #13 from ryuuya/10-create-db
+    
+    usersテーブル作成
+
+[33mcommit e4d6f7b08bb925bb9b0fe578107c9afca71200f4[m
+Author: vagrant <vagrant@vagrant.vm>
+Date:   Mon Jun 19 02:33:37 2017 +0000
+
+    usersテーブル作成
+
+[33mcommit ca3d123f91eb2ac412add4a73012c42f72bc2064[m
+Merge: c607525 305d063
+Author: ryuuya <ryuuyamh@yahoo.co.jp>
+Date:   Mon Jun 19 10:50:14 2017 +0900
+
+    Merge pull request #7 from ryuuya/4-add-index
+    
+    redme編集
+
+[33mcommit c6075257c413ca1f7abd9a9b5291d3907d3ac49f[m
+Merge: e418073 2f61707
+Author: ryuuya <ryuuyamh@yahoo.co.jp>
+Date:   Mon Jun 19 10:49:55 2017 +0900
+
+    Merge pull request #8 from ryuuya/5-add-new
+    
+    Gemfileに##追加
+
+[33mcommit e418073b14bc8b2d073ff16683e0ec3fd1214424[m
+Merge: c3edf93 c2db9eb
+Author: ryuuya <ryuuyamh@yahoo.co.jp>
+Date:   Mon Jun 19 10:49:10 2017 +0900
+
+    Merge pull request #9 from ryuuya/6-create-db
+    
+    dbフォルダにhata.htmlを追加しました
+
+[33mcommit 2f6170737c071da8f065ea50e05ed4510c6d9ee0[m
+Author: Your Name <you@example.com>
+Date:   Mon Jun 19 01:38:08 2017 +0000
+
+    Gemfileに##追加
+
+[33mcommit c2db9ebe117ea802b95270d05a18d4f9ada82ec5[m
+Author: vagrant <vagrant@vagrant.vm>
+Date:   Mon Jun 19 01:30:41 2017 +0000
+
+    hata.htmlを追加
+
+[33mcommit 305d063dcca1cfb88dccea97499b29b36195bc59[m
+Author: vagrant <vagrant@vagrant.vm>
+Date:   Mon Jun 19 01:29:29 2017 +0000
+
+    redme編集
+
+[33mcommit c3edf9342a9d1223bd63a55908cc1b22f2f61390[m
+Author: vagrant <vagrant@vagrant.vm>
+Date:   Mon Jun 19 01:13:18 2017 +0000
+
+    プロジェクトスタート
