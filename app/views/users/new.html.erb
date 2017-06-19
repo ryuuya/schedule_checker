@@ -1,3 +1,4 @@
+<h2>ユーザー登録</h2>
 <%= form_for @new do |new| %>
   <p>
     <%= new.label :login_id %><br>
@@ -19,3 +20,4 @@
     <%= new.submit %>
   </p>
 <% end %>
+<p><%= link_to "ホーム", posts_login_path  %></p>
