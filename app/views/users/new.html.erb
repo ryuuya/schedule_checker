@@ -1,10 +1,20 @@
-<%= from_for @new do |new| %>
+<%= form_for @new do |new| %>
   <p>
     <%= new.label :login_id %><br>
     <%= new.text_field :login_id %><br>
   </p>
+  <p>
     <%= new.label :name %><br>
     <%= new.text_field :name %>
+  </p>
+  <p>
+    <%= new.label :address %><br>
+    <%= new.text_field :address %><br>
+  </p>
+  <p>
+    <%= new.label :password %><br>
+    <%= new.text_field :password %><br>
+  </p>
   <p>
     <%= new.submit %>
   </p>
