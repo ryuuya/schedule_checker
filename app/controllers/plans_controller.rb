@@ -1,5 +1,15 @@
 class PlansController < ApplicationController
   def index
+    plans = Plan.all
+    
+    #カレンダーセット用データ
+    @datas = []
+    plans.each do |date| 
+      @datas = [
+        'title' => date['title'],
+        'start' => date['start_at']
+      ]
+    end
   end
 
   def show

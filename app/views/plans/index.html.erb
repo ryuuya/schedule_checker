@@ -1,13 +1,20 @@
 <h1>スケジュール</h1>
-<div id="calendar"></div>
 <script>
+/* 予定の取得  */
+  window.datas = <%= raw @datas.to_json %>
+</script>
+<div id="calendar"></div>
 
+<script>
 /* 現在は固定値、後にユーザーのplanの数 + 1 に変更*/
 <% test = 1 %>
 $(document).ready(function(){
   $('#calendar').fullCalendar({
     selectable: true,
     selectHelper: true,
+    /* 予定反映  */
+    events: window.datas,
+    timeFormat: 'H:mm',
     
     /* 日付クリック時の処理  */
     dayClick: function(date) {
