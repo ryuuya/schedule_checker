@@ -33,6 +33,14 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+#RailsでJqueryを利用できるようにするgem
+gem "jquery-rails"
+#Jqueryのfullcalendar機能を扱えるようにするgem
+gem 'fullcalendar-rails'
+#Jqueryを動作する際に必要な二つのgem
+gem 'momentjs-rails'
+gem 'jquery-turbolinks'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
