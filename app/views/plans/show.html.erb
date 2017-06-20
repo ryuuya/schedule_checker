@@ -1,9 +1,9 @@
-<h1>SHOW</h1>
+<h1><%= @plan.start_at.month %>/<%= @plan.start_at.day %></h1>
 
 <p>予定：<%= @plan.title %></p>
 <p>開始時間：<%= datetime_select @plan, :start_at, :discard_year => true, :discard_month => true, :default => @plan.start_at %></p>
 <p>終了時間：<%= datetime_select @plan, :end_at, :discard_year => true, :discard_month => true, :default => @plan.end_at %></p>
 <p>詳細：<%= @plan.detail %></p>
 <%= link_to "戻る", index_path %>
-<p><%= button_to "削除", plans_destroy_path, :confirm => "本当に削除しますか？", :method => :delete %></p>
+<p><%= button_to "削除", plans_destroy_path, :method => :delete %></p>
 <p><%= button_to "編集", plans_edit_path, :method => :get %></p>
