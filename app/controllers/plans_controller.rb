@@ -7,7 +7,8 @@ class PlansController < ApplicationController
     plans.each do |date| 
       @datas = [
         'title' => date['title'],
-        'start' => date['start_at']
+        'start' => date['start_at'],
+        'url' => '/show/' + date['id'].to_s
       ]
     end
   end

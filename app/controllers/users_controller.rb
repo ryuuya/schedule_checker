@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.save
-    redirect_to users_index_path
+    redirect_to index_path
   end
   def login
     @user = User.find_by_login_id params[:login_id]
