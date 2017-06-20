@@ -1,6 +1,6 @@
 class AddCreateTablePlans < ActiveRecord::Migration[5.1]
   def change
-    create_table :plans do |i|
+    create_table :plans, :options => 'ENGINE=InnoDB DEFAULT CHARSET=utf8' do |i|
       i.string :title
       i.text :detail
       i.integer :color_id

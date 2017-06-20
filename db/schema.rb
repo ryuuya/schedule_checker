@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20170619030845) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "plans", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "plans", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
     t.text "detail"
     t.integer "color_id"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20170619030845) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.string "address"
     t.string "password"

@@ -6,4 +6,7 @@ get "index", to: "plans#index"
 get "users/new"
 
 post "users", to: "users#create"
+
+#loginページルーティング
+get "users/login"
 end
