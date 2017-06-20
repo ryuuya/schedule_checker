@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20170619030845) do
 
-  create_table "color", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "color", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "color_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
