@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+#indexページルーティング
 get "index", to: "plans#index"
 
 #newページルーティング
@@ -17,5 +18,5 @@ get "show/:id", to: "plans#show", as: "plans_show"
 delete "show/:id", to: "plans#destroy", as: "plans_destroy"
 
 #editページルーティング
-get ":id/edit", to: "plans#edit", as: "plans_edit"
+get "show/:id/edit", to: "plans#edit", as: "plans_edit"
 end

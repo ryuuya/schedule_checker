@@ -1,3 +1,19 @@
 <h1>スケジュール</h1>
 <div id="calendar"></div>
+<script>
+
+/* 現在は固定値、後にユーザーのplanの数 + 1 に変更*/
+<% test = 1 %>
+$(document).ready(function(){
+  $('#calendar').fullCalendar({
+    selectable: true,
+    selectHelper: true,
+    
+    /* 日付クリック時の処理  */
+    dayClick: function(date) {
+      window.location.href = "/show/" + <%= test %> + "/edit"
+    }
+  });
+});
+</script>
 
