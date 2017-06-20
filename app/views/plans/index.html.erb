@@ -10,18 +10,25 @@
 <% test = 1 %>
 $(document).ready(function(){
   $('#calendar').fullCalendar({
+
+  /* 表示するボタン */
     header: {
       left: 'prev,next today',
       center: 'title',
       right: 'month,agendaWeek,agendaDay'
     },
+
+    /*　ボタンの名前変更　*/
     buttonText: {
       today: '今日',
       month: '月',
       week: '週',
       day: '日'
-     },
+    },
+    /* 初期表示  */
     defaultView:'agendaWeek',
+    
+    /* 曜日の目名称  */
     dayNamesShort: ["日","月","火","水","木","金","土"],
     firstDay: 1,
     selectable: true,
