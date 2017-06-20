@@ -7,5 +7,6 @@ class AddCreateTableUsers < ActiveRecord::Migration[5.1]
       i.timestamps
       i.string :login_id
     end
+      add_column :users, :password_digest, :string
   end
 end

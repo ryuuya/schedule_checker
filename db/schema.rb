@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20170619030845) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "login_id"
+    t.string "password_digest"
   end
 
 end

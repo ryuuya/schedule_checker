@@ -7,10 +7,8 @@ class UsersController < ApplicationController
     @user.save
     redirect_to users_index_path
   end
-  def login 
-  end
   private
    def user_params
-     params[:user].permit(:login_id, :name, :password, :address)
+     params[:user].permit(:login_id, :name, :password, :password_confirmation, :address)
    end
 end
