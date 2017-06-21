@@ -24,7 +24,12 @@ class PlansController < ApplicationController
   end
 
   def edit
-    @plan = Plan.find(params[:id])
+    all = Plan.all
+    if params[:id] == all.length + 1
+      @plan = Plan.new
+    else
+      @plan = Plan.find(params[:id])
+    end
   end
 
   def update
