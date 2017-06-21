@@ -55,34 +55,32 @@
         window.location.href = "/show/" + <%= @length %> + "/edit"
         }
       });
-            $('#calendar').fullCalendar({
+      $('#minicalendar').fullCalendar({
+        header: {
+          left: '',
+          center: 'prev,next title',
+          right: ''
+        },
 
         /* 表示するボタン */
-        header: {
-          left: 'prev,next today',
-          center: 'title',
-          right: 'month,agendaWeek,agendaDay'
-        },
 
         /*　ボタンの名前変更　*/
-        buttonText: {
-          today: '今日',
-          month: '月',
-          week: '週',
-          day: '日'
-        },
 
         /* 初期表示  */
-        defaultView:'agendaWeek',
+        defaultView:'month',
     
         /* 曜日の名称  */
         dayNamesShort: ["日","月","火","水","木","金","土"],
         firstDay: 1,
+        businessHours: false,
         selectable: true,
         selectHelper: true,
+        height: 200,
+        contentHeight: 200,
+        aspectRaito: 5.20,
+        titleFormat: "YYYY年M月",
+
         /* 予定反映  */
-        events: window.datas,
-        timeFormat: 'H:mm',
     
         /* 日付クリック時の処理  */
         dayClick: function(date) {
