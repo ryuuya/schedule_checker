@@ -1,7 +1,10 @@
 <h1>予定登録</h1>
 
 <%= form_for @plan, :url => plans_update_path, :html => {:method => "put"} do |i| %>
-
+  <p>
+    <%= i.label "user_id" %>
+    <%= i.text_field "user_id" %>
+  </p>
   <p>
     <%= i.label '予定' %><br>
     <%= i.text_field 'title' %>
