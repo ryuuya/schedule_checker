@@ -1,12 +1,16 @@
-<h1>ログイン画面</h1>
-<%= form_for @user, :url => check_path, :html => { :method => :post } do |user| %>
-<p>
-<%= user.label :login_id %><br>
-<%= user.text_field :login_id %><br>
-<%= user.label :password %><br>
-<%= user.password_field :password_digest %>
-</p>
-<%= user.submit %>
-
-<% end %>
-<%= link_to "新規登録", users_new_path %>
+<html>
+  <head>
+    <%= stylesheet_link_tag    "login", :media => "all" %>
+  </head>
+  <body>
+    <h1 class= "login_h1">ログイン画面</h1>
+    <%= form_for @user, :url => check_path, :html => { :method => :post } do |user| %>
+      <h3 class = "login_h3"><%= user.label :login_id %></h3>
+      <p class= "login_p"><%= user.text_field :login_id %></p>
+      <h3 class = "login_h3"><%= user.label :password %></h3>
+      <p class= "login_p"><%= user.password_field :password_digest %></p>
+    <p class= "login_p"><%= user.submit %></p>
+    <% end %>
+   <p class= "login_p"> <%= link_to "新規登録", users_new_path %></p>
+  </body>
+</html>
