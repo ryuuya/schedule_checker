@@ -31,17 +31,31 @@ class PlansController < ApplicationController
   end
 
   def edit
-    @plan = Plan.find(params[:id])
+    all = Plan.maximum("id")
+    length = params[:id]
+    if length.to_i == all + 1
+      @plan = Plan.new()
+    else
+      @plan = Plan.find(params[:id])
+    end
   end
 
   def update
-    @plan = Plan.find(params[:id])
-    @plan.update(plan_params)
+    all = Plan.maximum("id")
+    length = params[:id]
+    params[:user_id] = 1
+    if length.to_i == all + 1
+      @plan = Plan.new(plan_params)
+      @plan.save!
+    else
+      @plan = Plan.find(params[:id])
+      @plan.update(plan_params)
+    end
     redirect_to index_path
   end
 
   private
   def plan_params
-    params[:plan].permit(:title, :detail, :start_at, :end_at, :color_id)
+    params[:plan].permit(:title, :detail, :start_at, :end_at, :color_id, :user_id)
   end
 end
