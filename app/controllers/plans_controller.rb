@@ -1,6 +1,7 @@
 class PlansController < ApplicationController
   def index
     @plans = Plan.all
+    @length = Plan.maximum("id") + 1
     today = Time.now
     #カレンダーセット用データ
     @datas = []
