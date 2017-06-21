@@ -14,6 +14,10 @@ post "check", to: "users#check"
 #ユーザーshowページルーディング
 get "users/show/:id", to: "users#show", as:"user"
 
+#ユーザーeditページルーティング
+  get 'users/:id/edit', to:'users#edit', as:'user/edit'
+
+  put 'users/:id/update', to:'users#update', as:'user/update'
 #---------------------スケジュールルーティング--------------------
 #indexページルーティング
 get "index", to: "plans#index"
