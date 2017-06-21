@@ -11,6 +11,8 @@ post "users", to: "users#create"
 #loginページルーティング
 get "users/login"
 
+post "check", to: "users#check"
+
 #showページルーティング
 get "show/:id", to: "plans#show", as: "plans_show"
 
