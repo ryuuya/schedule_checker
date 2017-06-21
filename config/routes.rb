@@ -8,7 +8,9 @@ post "users", to: "users#create"
 
 #ユーザーloginページルーティング
 get "users/login"
-
+  
+post "check", to: "users#check"
+  
 #ユーザーshowページルーディング
 get "users/show/:id", to: "users#show", as:"user"
 
@@ -24,4 +26,6 @@ delete "show/:id", to: "plans#destroy", as: "plans_destroy"
 
 #editページルーティング
 get "show/:id/edit", to: "plans#edit", as: "plans_edit"
+
+put "show/:id", to: "plans#update", as: "plans_update"
 end
