@@ -1,10 +1,39 @@
+div {
+  margin: 0,0,0,0;
+  padding: 0,0,0,0;
+}
 #aside {
   display:inline-block;
-  width: 100px;
+  width: 200px;
 }
 
 #calendar {
   display:inline-block;
-  width: 1000px;
+  width: 900px;
   margin-left: 30px;
+}
+
+#minicalendar {
+  max-width: 220px;
+  margin: 0 auto;
+}
+
+#minicalendar .fc-basic-view .fc-body .fc-row {
+  min-height: 1em !important;
+}
+
+#minicalendar .fc-button {
+  height: 2em !important;
+  padding: 0 .1em !important;
+  font-size: 0.8em !important;
+  margin: 0,0;
+}
+
+#minicalendar .fc-prev-button .fc-button .fc-state-default .fc-corner-left {
+  height: 2em;
+  width: 20px;
+}
+
+#minicalendar h2{
+  font-size:20px;
 }
