@@ -1,17 +1,22 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-#indexページルーティング
-get "index", to: "plans#index"
-
-#newページルーティング
+#---------------------ユーザールーティング-------------------------
+#ユーザーnewページルーティング
 get "users/new"
 
 post "users", to: "users#create"
 
-#loginページルーティング
+#ユーザーloginページルーティング
 get "users/login"
-
+  
 post "check", to: "users#check"
+  
+#ユーザーshowページルーディング
+get "users/show/:id", to: "users#show", as:"user"
+
+#---------------------スケジュールルーティング--------------------
+#indexページルーティング
+get "index", to: "plans#index"
 
 #showページルーティング
 get "show/:id", to: "plans#show", as: "plans_show"
