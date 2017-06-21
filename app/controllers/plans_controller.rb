@@ -1,8 +1,13 @@
 class PlansController < ApplicationController
   def index
     @plans = Plan.all
-    @length = Plan.maximum("id") + 1
+    if Plan.exists?
+      @length = Plan.maximum("id") + 1
+    else
+      @length = 1
+    end
     today = Time.now
+    
     #カレンダーセット用データ
     @datas = []
     @today_plans = []
@@ -13,10 +18,16 @@ class PlansController < ApplicationController
         'end' => date['end_at'],
         'url' => '/show/' + date['id'].to_s
       ]
-      p today.strftime("%m%d")
       if today.strftime("%m%d") == date['start_at'].strftime("%m%d")
         @today_plans.push(date['title'])
       end
+    end
+    if params[:day] == nil
+      @day = today.strftime("%Y-%m-%d")
+      @disp = "agendaWeek"
+    else
+      @day = params[:day]
+      @disp = "agendaDay"
     end
   end
 

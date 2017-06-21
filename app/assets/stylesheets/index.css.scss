@@ -5,6 +5,7 @@ div {
 #aside {
   display:inline-block;
   width: 200px;
+  position: relative;
 }
 
 #calendar {
@@ -16,6 +17,8 @@ div {
 #minicalendar {
   max-width: 220px;
   margin: 0 auto;
+  position: absolute;
+  top: 400px;
 }
 
 #minicalendar .fc-basic-view .fc-body .fc-row {
