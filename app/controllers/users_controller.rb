@@ -18,7 +18,10 @@ class UsersController < ApplicationController
   def login
     @user = User.new
   end
-
+  def show
+    id = params[:id]
+    @user = User.find(id)
+  end
   private
    def user_params
      params[:user].permit(:login_id, :name, :password, :password_confirmation, :address)
