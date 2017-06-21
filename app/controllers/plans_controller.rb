@@ -31,7 +31,8 @@ class PlansController < ApplicationController
 
   def edit
     all = Plan.all
-    if params[:id] == all.length + 1
+    length = params[:id]
+    if length.to_i == all.length + 1
       @plan = Plan.new
     else
       @plan = Plan.find(params[:id])
@@ -39,8 +40,14 @@ class PlansController < ApplicationController
   end
 
   def update
-    @plan = Plan.find(params[:id])
-    @plan.update(plan_params)
+    all = Plan.all
+    length = params[:id]
+    if length.to_i == all.length + 1
+      plan = Plan.new(plan_params)
+      plan.save
+    else
+      Plan.find(params[:id]).update(plan_params)
+    end
     redirect_to index_path
   end
 
