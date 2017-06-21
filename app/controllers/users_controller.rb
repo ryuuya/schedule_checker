@@ -7,14 +7,17 @@ class UsersController < ApplicationController
     @user.save
     redirect_to index_path
   end
-  #def login
-   # @user = User.find_by_login_id params[:login_id]
-    #if @user && @user.authenticate(params[:password])
-     #   render :text => "Login OK"
-   # else
-    #    render :text => "Login NG"
-   # end
-  #end
+  def check
+    @user = User.find_by login_id: (params[:user][:login_id])
+    if @user && @user.authenticate(params[:user][:password_digest])
+        redirect_to index_path
+    else
+        redirect_to  users_login_path
+    end
+  end
+  def login
+    @user = User.new
+  end
   private
    def user_params
      params[:user].permit(:login_id, :name, :password, :password_confirmation, :address)

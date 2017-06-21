@@ -1,13 +1,11 @@
 <h1>ログイン画面</h1>
-<%= form_tag('/members/logintmp') do %>
+<%= form_for @user, :url => check_path, :html => { :method => :post } do |user| %>
 <p>
-<%= label_tag :login_id %><br>
-<%= text_field_tag 'login_name', nil, class: 'loginbox-username' %><br>
-<%= label_tag :password %><br>
-<%= password_field_tag 'password', nil, class:  'loginbox-password' %>
+<%= user.label :login_id %><br>
+<%= user.text_field :login_id %><br>
+<%= user.label :password %><br>
+<%= user.password_field :password_digest %>
 </p>
-
-<%= submit_tag 'Login', class: 'button button-green' %>
-
+<%= user.submit %>
 <% end %>
 
