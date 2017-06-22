@@ -50,6 +50,7 @@
         /* 予定反映  */
         events: window.datas,
         timeFormat: 'H:mm',
+        titleFormat: 'YYYY年MM月DD日',
     
         /* 日付クリック時の処理  */
         dayClick: function(date) {
@@ -89,6 +90,32 @@
           window.location.href = "/index?day=" + day
         }
       });
+    });
+    /*指定した日付に天気をセット*/
+    $(function() {
+      var icon_url = [];
+      <% @weather_icons.each do |icon| %>
+        icon_url.push("<%= icon %>");
+      <% end %>
+      var count = 0;
+      $('#calendar .fc-day-header').each(function(){
+        var days = new Date();
+        var day = days.getDate();
+        if(day.length == 1){
+          day = '0' + day;
+        } 
+        var month = days.getMonth()+1;
+        var now_days = month + "/" + day;
+        var str = ($(this).text().substring(2,6));
+        if(now_days == str || count > 0 ){
+          if(count < 5){
+            $(this).append("<img src = http://openweathermap.org/img/w/"+ icon_url[count]  +".png width = 40 height = 40 /> ");
+          }
+          count++;
+        } 
+      });
+      
+      
     });
     </script>
   </body>
