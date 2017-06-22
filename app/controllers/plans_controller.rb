@@ -1,13 +1,33 @@
 class PlansController < ApplicationController
+  $user_id
+  $tenki_url = "http://api.openweathermap.org/data/2.5/forecast"
   def index
-    @plans = Plan.all
+    @weather_icons = []
+    @plans = []
+    $user_id = params[:user_id]
+    address = User.find_by(id: params[:user_id]).address
+    res = Faraday.get $tenki_url, {q: address, APPID: "c82b64efba2a36c7dc188c410a386457",cnt: 5}
+    tenkis = JSON.parse(res.body)
+    tenkis["list"].each do |tenki|
+      tenki["weather"].each do |weather|
+        @weather_icons.push(weather["icon"])
+      end
+    end
+    
     if Plan.exists?
-      @length = Plan.maximum("id") + 1
+      @length =  Plan.maximum("id") + 1
+      if Plan.exists?(:user_id => $user_id)
+        @plans << Plan.find_by(user_id: $user_id.to_i)
+      else 
+        Plan.exists?(:user_id => $user_id)
+        @plans =[]
+      end
     else
-      @length = 1
+      @length = 1  
+      @plans =[]
     end
     today = Time.now
-    
+    p @plans 
     #カレンダーセット用データ
     @datas = []
     @today_plans = []
@@ -43,7 +63,11 @@ class PlansController < ApplicationController
 
   def edit
     all = Plan.maximum("id")
-    length = params[:id]
+    if all == nil
+      length = 1
+    else
+      length = params[:id]
+    end
     if length.to_i == all + 1
       @plan = Plan.new()
     else
@@ -54,7 +78,6 @@ class PlansController < ApplicationController
   def update
     all = Plan.maximum("id")
     length = params[:id]
-    params[:user_id] = 1
     if length.to_i == all + 1
       @plan = Plan.new(plan_params)
       @plan.save!
