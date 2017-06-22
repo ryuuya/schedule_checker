@@ -5,12 +5,12 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.save
-    redirect_to index_path
+    redirect_to index_path + "?user_id=" + @user.id.to_s
   end
   def check
     @user = User.find_by login_id: (params[:user][:login_id])
     if @user && @user.authenticate(params[:user][:password_digest])
-        redirect_to index_path
+        redirect_to index_path + "?user_id=" + @user.id.to_s
     else
         redirect_to  users_login_path
     end
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update_attributes(user_params)
-    redirect_to user_path
+    redirect_to user_path 
   end
   private
    def user_params

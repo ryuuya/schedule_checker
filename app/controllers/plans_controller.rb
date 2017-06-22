@@ -1,13 +1,22 @@
 class PlansController < ApplicationController
+  $user_id
   def index
-    @plans = Plan.all
+    @plans = []
+    $user_id = params[:user_id]
     if Plan.exists?
-      @length = Plan.maximum("id") + 1
+      @length =  Plan.maximum("id") + 1
+      if Plan.exists?(:user_id => $user_id)
+        @plans << Plan.find_by(user_id: $user_id.to_i)
+      else 
+        Plan.exists?(:user_id => $user_id)
+        @plans =[]
+      end
     else
-      @length = 1
+      @length = 1  
+      @plans =[]
     end
     today = Time.now
-    
+    p @plans 
     #カレンダーセット用データ
     @datas = []
     @today_plans = []
@@ -43,7 +52,11 @@ class PlansController < ApplicationController
 
   def edit
     all = Plan.maximum("id")
-    length = params[:id]
+    if all == nil
+      length = 1
+    else
+      length = params[:id]
+    end
     if length.to_i == all + 1
       @plan = Plan.new()
     else
