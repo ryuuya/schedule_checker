@@ -17,7 +17,7 @@ class PlansController < ApplicationController
     if Plan.exists?
       @length =  Plan.maximum("id") + 1
       if Plan.exists?(:user_id => $user_id)
-        @plans << Plan.find_by(user_id: $user_id.to_i)
+        @plans = Plan.where(user_id: $user_id.to_i)
       else 
         Plan.exists?(:user_id => $user_id)
         @plans =[]
@@ -28,6 +28,7 @@ class PlansController < ApplicationController
     end
     today = Time.now
     p @plans 
+
     #カレンダーセット用データ
     @datas = []
     @today_plans = []
@@ -57,21 +58,23 @@ class PlansController < ApplicationController
 
   def destroy
     @plan = Plan.find(params[:id])
+    id = @plan.user_id
     @plan.destroy
-    redirect_to index_path
+    redirect_to index_path + "?user_id=" + id.to_s
   end
 
   def edit
     all = Plan.maximum("id")
     if all == nil
       length = 1
-    else
-      length = params[:id]
-    end
-    if length.to_i == all + 1
       @plan = Plan.new()
     else
-      @plan = Plan.find(params[:id])
+      length = params[:id]
+      if length.to_i == all + 1
+        @plan = Plan.new()
+      else
+        @plan = Plan.find(params[:id])
+      end
     end
   end
 
@@ -80,12 +83,14 @@ class PlansController < ApplicationController
     length = params[:id]
     if length.to_i == all + 1
       @plan = Plan.new(plan_params)
+      id = @plan.user_id
       @plan.save!
     else
       @plan = Plan.find(params[:id])
+      id = @plan.user_id
       @plan.update(plan_params)
     end
-    redirect_to index_path
+    redirect_to index_path + "?user_id=" + id.to_s
   end
 
   private
