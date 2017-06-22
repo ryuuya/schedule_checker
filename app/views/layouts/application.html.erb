@@ -17,15 +17,25 @@ header{
 
   <body>
     <header>
-      <p id="name">aa</p>
+      <p id="name"></p>
     </header>
     <%= yield %>
   </body>
   <script>
     id = localStorage.getItem("user_id");
     if (id != null){
-      name = localStorage.getItem("user_name")
-      document.getElementById("name").innerHTML = "ようこそ"+ name + "さん";
+      name = localStorage.getItem("user_name");
+      var user = document.getElementById("name");
+      user.innerHTML = "ようこそ"+ name + "さん";
+      var button = document.createElement("button");
+      button.innerText = "ログアウト";
+      button.onclick = logout;
+      user.append(button);
     }
+  function logout(){
+    localStorage.removeItem("user_id");
+    localStorage.removeItem("user_name");
+    window.location.href = "/"
+  }
   </script>
 </html>
