@@ -1,5 +1,12 @@
 <!DOCTYPE html>
 <html>
+<style>
+header{
+  height:60px;
+  border-bottom: solid 1px #000;
+  text-align:right;
+}
+</style>
   <head>
     <title>ScheduleChecker</title>
     <%= csrf_meta_tags %>
@@ -9,6 +16,16 @@
   </head>
 
   <body>
+    <header>
+      <p id="name">aa</p>
+    </header>
     <%= yield %>
   </body>
+  <script>
+    id = localStorage.getItem("user_id");
+    if (id != null){
+      name = localStorage.getItem("user_name")
+      document.getElementById("name").innerHTML = "ようこそ"+ name + "さん";
+    }
+  </script>
 </html>
