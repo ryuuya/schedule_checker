@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   def check
     @user = User.find_by login_id: (params[:user][:login_id])
     if @user && @user.authenticate(params[:user][:password_digest])
-        redirect_to index_path + "?user_id=" + @user.id.to_s
+        redirect_to index_path + "?user_id="+@user.id.to_s
     else
         redirect_to  users_login_path
     end

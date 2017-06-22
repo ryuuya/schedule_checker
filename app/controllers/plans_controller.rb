@@ -5,6 +5,7 @@ class PlansController < ApplicationController
     @weather_icons = []
     @plans = []
     $user_id = params[:user_id]
+    @user_name = User.find($user_id).name
     address = User.find_by(id: params[:user_id]).address
     res = Faraday.get $tenki_url, {q: address, APPID: "c82b64efba2a36c7dc188c410a386457",cnt: 5}
     tenkis = JSON.parse(res.body)
