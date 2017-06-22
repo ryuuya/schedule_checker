@@ -9,7 +9,7 @@
       <p class= "login_p"><%= user.text_field :login_id %></p>
       <h3 class = "login_h3"><%= user.label :password %></h3>
       <p class= "login_p"><%= user.password_field :password_digest %></p>
-    <p class= "login_p"><%= user.submit %></p>
+    <p class= "login_p"><%= user.submit(["Login"]) %></p>
     <% end %>
    <p class= "login_p"> <%= link_to "新規登録", users_new_path %></p>
   </body>

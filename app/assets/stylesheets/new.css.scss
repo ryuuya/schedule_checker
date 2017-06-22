@@ -7,7 +7,7 @@ h2.new_h2 {
 p.new_p {
   text-align: center;
 }
-input {
+#user_login_id {
   border:0;
   padding:10px;
   font-size:1.3em;
@@ -17,7 +17,17 @@ input {
   margin:0 0 20px;
   width:300px;
 }
-select {
+#user_name {
+  border:0;
+  padding:10px;
+  font-size:1.3em;
+  font-family:Arial, sans-serif;
+  color:#aaa;
+  border:solid 1px #ccc;
+  margin:0 0 20px;
+  width:300px;
+}
+#user_address {
   border:0;
   padding:10px;
   font-size:1.3em;
@@ -26,4 +36,14 @@ select {
   border:solid 1px #ccc;
   margin:0 0 20px;
   width:320px;
+}
+#user_password {
+  border:0;
+  padding:10px;
+  font-size:1.3em;
+  font-family:Arial, sans-serif;
+  color:#aaa;
+  border:solid 1px #ccc;
+  margin:0 0 20px;
+  width:300px;
 }
