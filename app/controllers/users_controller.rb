@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  rescue_from ActiveRecord::RecordNotFound, with: :render_404
+  rescue_from ActionController::RoutingError, with: :render_404
+  rescue_from Exception, with: :render_500
   def index
   end
   def new
@@ -31,6 +34,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update_attributes(user_params)
     redirect_to user_path
+  end
+  def render_404
+    render template: '/public/404.html', status: 404, layout: 'application', content_type: 'text/html'
+  end
+  def render_500
+    render template: '/public/500.html', status: 500, layout: 'application', content_type: 'text/html'
   end
   private
    def user_params
