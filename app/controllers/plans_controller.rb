@@ -67,13 +67,14 @@ class PlansController < ApplicationController
     all = Plan.maximum("id")
     if all == nil
       length = 1
-    else
-      length = params[:id]
-    end
-    if length.to_i == all + 1
       @plan = Plan.new()
     else
-      @plan = Plan.find(params[:id])
+      length = params[:id]
+      if length.to_i == all + 1
+        @plan = Plan.new()
+      else
+        @plan = Plan.find(params[:id])
+      end
     end
   end
 
