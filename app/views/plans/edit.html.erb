@@ -1,35 +1,40 @@
-<h1>予定登録</h1>
+<html>
+  <head>
+  </head>
+  <body>
+    <h1 id="main_title">予定登録</h1>
 
-<%= form_for @plan, :url => plans_update_path, :html => {:method => "put"} do |i| %>
-  <p>
-    <%= i.label "user_id" %>
-    <%= i.text_field "user_id" %>
-  </p>
-  <p>
-    <%= i.label '予定' %><br>
-    <%= i.text_field 'title' %>
-  </p>
-  <p>
-    <%= i.label '開始時間' %><br>
-    <%= i.datetime_select 'start_at' %>
-  </p>
-  <p>
-    <%= i.label '終了時間' %><br>
-    <%= i.datetime_select 'end_at' %>
-  </p>
-  <p>
-    <%= i.label '詳細' %><br>
-    <%= i.text_field 'detail', :size => "80*30" %>
-  </p>
-  <p>
-    <%= i.label '色選択' %><br>
-    <%= i.collection_select 'color_id', Color.all, :id, :color_name, :include_blank => true %>
-  </p>
-  <p>
-    <%= i.submit '登録' %>
-  </p>
+    <%= form_for @plan, :url => plans_update_path, :html => {:method => "put"} do |i| %>
+      <p id="user_id">
+        <%= i.label "user_id" %><br>
+        <%= i.text_field "user_id" %>
+      </p>
+      <p id="title">
+        <%= i.label '予定' %><br>
+        <%= i.text_field 'title' %>
+      </p>
+      <p id="start">
+        <%= i.label '開始時間' %><br>
+        <%= i.datetime_select 'start_at' %>
+      </p>
+      <p id="end">
+        <%= i.label '終了時間' %><br>
+        <%= i.datetime_select 'end_at' %>
+      </p>
+      <p id="detail">
+        <%= i.label '詳細' %><br>
+        <%= i.text_field 'detail', :size => "80" %>
+      </p>
+      <p id="color">
+        <%= i.label '色選択' %><br>
+        <%= i.collection_select 'color_id', Color.all, :id, :color_name, :include_blank => true %>
+      </p>
+      <p id="save">
+        <%= i.submit '登録' %>
+      </p>
 
-<% end %>
+    <% end %>
 
-<p><%= link_to '戻る', index_path %></p>
-
+    <p id="back"><%= link_to '戻る', index_path %></p>
+  </body>
+</html>
