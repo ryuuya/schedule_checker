@@ -9,8 +9,13 @@ class UsersController < ApplicationController
   end
   def create
     @user = User.new(user_params)
-    @user.save
-    redirect_to index_path + "?user_id=" + @user.id.to_s
+    @check = User.find_by login_id: (params[:user][:login_id])
+    if @check.login_id == @user.login_id
+      redirect_to  users_new_path
+    else
+      @user.save
+      redirect_to index_path + "?user_id=" + @user.id.to_s
+    end
   end
   def check
     @user = User.find_by login_id: (params[:user][:login_id])
@@ -36,10 +41,10 @@ class UsersController < ApplicationController
     redirect_to user_path 
   end
   def render_404
-    render template: '/public/404.html', status: 404, layout: 'application', content_type: 'text/html'
+    render template: '/errors/error_404.html', status: 404, layout: 'application', content_type: 'text/html'
   end
   def render_500
-    render template: '/public/500.html', status: 500, layout: 'application', content_type: 'text/html'
+    render template: '/errors/error_500.html', status: 500, layout: 'application', content_type: 'text/html'
   end
   private
    def user_params
