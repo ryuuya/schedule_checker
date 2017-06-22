@@ -7,7 +7,7 @@
     <%= form_for @plan, :url => plans_update_path, :html => {:method => "put"} do |i| %>
       <p id="user_id">
         <%= i.label "user_id" %><br>
-        <%= i.text_field "user_id" %>
+        <%= i.text_field "user_id", :readonly => true %>
       </p>
       <p id="title">
         <%= i.label '予定' %><br>
@@ -35,6 +35,11 @@
 
     <% end %>
 
-    <p id="back"><%= link_to '戻る', index_path %></p>
+    <p id="back"><%= link_to '戻る', index_path + "?user_id=" + params[:user_id].to_s  %></p>
   </body>
+  <script>
+    var id = document.getElementById("plan_user_id");
+    var user_id = localStorage.getItem("user_id");
+    id.value = user_id;
+  </script>
 </html>
