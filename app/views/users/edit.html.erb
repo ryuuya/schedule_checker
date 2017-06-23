@@ -1,23 +1,21 @@
-<h2>ユーザー情報編集</h2>
-<%= form_for @user, :url => { :action => "update" }, :html => { :method => :put } do |f| %>
-  <p>
-    <%= f.label :login_id %><br>
-    <%= f.text_field :login_id %>
-  </p>
-  <p>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :address %><br>
-    <%= f.select 'address', options_for_select(["","北海道","青森県","岩手県","秋田県","宮城県","山形県","福島県","茨城県","栃木県","群馬県","埼玉県","神奈川県","東京都","千葉県","新潟県","富山県","石川県","福井県","岐阜県","長野県","山梨県","静岡県","愛知県","滋賀県","三重県","京都府","奈良県","和歌山県","大阪府","兵庫県","鳥取県","岡山県","島根県","広島県","山口県","徳島県","香川県","高知県","愛媛県","大分県","福岡県","佐賀県","長崎県","熊本県","宮崎県","鹿児島県","沖縄県"]) %>
-  </p>
-  <p>
-    <%= f.label :password %><br>
-    <%= f.password_field :password %>
-  </p>
-  <p>
-  <p>
-    <%= f.submit "Save changes" %>
-  </p>
-<% end %>
+<html>
+  <head>
+  </head>
+  <body>
+    <div class= "edit">
+      <h1>ユーザー情報編集</h1>
+      <%= form_for @user, :url => { :action => "update" }, :html => { :method => :put } do |f| %>
+        <h2><%= f.label :login_id %></h2>
+        <p><%= f.text_field :login_id %></p>
+        <h2><%= f.label :name %></h2>
+        <p><%= f.text_field :name %></p>
+        <h2><%= f.label :address %></h2>
+        <p><%= f.select 'address', options_for_select(["","北海道","青森県","岩手県","秋田県","宮城県","山形県","福島県","茨城県","栃木県","群馬県","埼玉県","神奈川県","東京都","千葉県","新潟県","富山県","石川県","福井県","岐阜県","長野県","山梨県","静岡県","愛知県","滋賀県","三重県","京都府","奈良県","和歌山県","大阪府","兵庫県","鳥取県","岡山県","島根県","広島県","山口県","徳島県","香川県","高知県","愛媛県","大分県","福岡県","佐賀県","長崎県","熊本県","宮崎県","鹿児島県","沖縄県"]) %></p>
+        <h2><%= f.label :password %></h2>
+        <p><%= f.password_field :password %></p>
+        <p class= "chenge"><%= f.submit "Save changes" %></p>
+      <% end %>
+    </div>
+  </body>
+</html>
+
