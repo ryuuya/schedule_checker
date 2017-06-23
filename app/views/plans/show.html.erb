@@ -10,7 +10,7 @@
     <p>詳細</p>
       <p id="show_detail"><%= @plan.detail %></p>
     <%= button_to "削除", plans_destroy_path + "?user_id" + @plan.user_id.to_s, :method => :delete %>
-    <%= button_to "編集", plans_edit_path + "?user_id="+@plan.user_id.to_s, :method => :get %>
+    <%= button_to "編集", plans_edit_path, :method => :get, :params =>{user_id: @plan.user_id.to_s}  %>
   </div>
   <%= link_to "戻る", index_path + "?user_id="+@plan.user_id.to_s %>
 </div>
