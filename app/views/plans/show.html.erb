@@ -1,9 +1,16 @@
-<h1><%= @plan.start_at.month %>/<%= @plan.start_at.day %></h1>
-
-<p>予定：<%= @plan.title %></p>
-<p>開始時間：<%= @plan.start_at.strftime("%H:%M") %></p>
-<p>終了時間：<%= @plan.end_at.strftime("%H:%M") %></p>
-<p>詳細：<%= @plan.detail %></p>
-<%= link_to "戻る", index_path + "?user_id="+@plan.user_id.to_s %>
-<p><%= button_to "削除", plans_destroy_path + "?user_id" + @plan.user_id.to_s, :method => :delete %></p>
-<p><%= button_to "編集", plans_edit_path + "?user_id="+@plan.user_id.to_s, :method => :get %></p>
+<h1 id="show_date"><%= @plan.start_at.month %>/<%= @plan.start_at.day %></h1>
+<div id="show_all">
+  <div id="show_main">
+    <p>予定</p>
+      <p id="show_title"><%= @plan.title %></p>
+    <p>開始時間</p>
+      <p id="show_start"><%= @plan.start_at.strftime("%H:%M") %></p>
+    <p>終了時間</p>
+      <p id="show_end"><%= @plan.end_at.strftime("%H:%M") %></p>
+    <p>詳細</p>
+      <p id="show_detail"><%= @plan.detail %></p>
+    <%= button_to "削除", plans_destroy_path + "?user_id" + @plan.user_id.to_s, :method => :delete %>
+    <%= button_to "編集", plans_edit_path + "?user_id="+@plan.user_id.to_s, :method => :get %>
+  </div>
+  <%= link_to "戻る", index_path + "?user_id="+@plan.user_id.to_s %>
+</div>
