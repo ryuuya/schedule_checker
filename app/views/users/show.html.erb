@@ -9,7 +9,7 @@
     <p><%= @user.address %></p>
     <h2>Login_id</h2>
     <p><%= @user.login_id %></p>
-    <p><%= button_to "スケジュールへ", index_path, :method => "get" %></p>
+    <p><%= button_to "スケジュールへ", index_path, :method => "get", :params =>{user_id: @user.id } %></p>
     <p><%= button_to "ユーザー情報編集", user_edit_path, :method => "get" %></p>
   </body>
 </html>
