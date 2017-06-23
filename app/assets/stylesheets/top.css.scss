@@ -1,3 +1,4 @@
+/*ログインボタンのデザイン*/
 #login_button {
   text-align: center;
   font-size: 1.4em;
@@ -11,12 +12,22 @@
   background-color: #00CC00;
   color: #fff;
 }
+/*タイトルのフォントとデザイン*/
 #top_title {
   text-align: center;
   background-color: #FF0000;
   color: white;
   text-shadow: -2px 4px 0 rgba(0,0,0,0.3); 
 }
+#main_schedule_checker {
+  font-family: 'Changa One', sans-serif;
+  font-weight: 400px;
+  text-transform: uppercase;
+  font-size: 90px;
+  letter-spacing: 15px;
+  margin: 0 0;
+}
+/*新規登録ボタンのデザイン*/
 #new_button {
   text-align: center;
   font-size: 1.4em;
@@ -30,14 +41,7 @@
   background-color: #24d;
   color: #fff;
 }
-#main_schedule_checker {
-  font-family: 'Changa One', sans-serif;
-  font-weight: 400px;
-  text-transform: uppercase;
-  font-size: 90px;
-  letter-spacing: 15px;
-  margin: 0 0;
-}
+/*ボタンの大きさ*/
 input[type=submit] {
   width: 100px;
   height: 50px;
