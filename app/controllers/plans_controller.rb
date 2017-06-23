@@ -1,6 +1,9 @@
 class PlansController < ApplicationController
+  require 'xmlsimple'
   $user_id
   $tenki_url = "http://api.openweathermap.org/data/2.5/forecast"
+  $search_url = "http://public.dejizo.jp/NetDicV09.asmx/SearchDicItemLite"
+  $get_url = "http://public.dejizo.jp/NetDicV09.asmx/GetDicItemLite"
   def index
     @weather_icons = []
     @plans = []
@@ -98,6 +101,42 @@ class PlansController < ApplicationController
   end
   
   def dictionary
+    if params[:page] != nil
+      use =  params[:page][:category]
+    end
+    key = params[:key_word]
+    if key == nil
+      @result_text = "ここに検索結果が表示されます"
+    else
+      result = Faraday.get $search_url, {
+                                              Dic: use,
+                                              Word: key,
+                                              Scope: "HEADWORD",
+                                              Match: "EXACT",
+                                              Merge: "OR",
+                                              Prof: "XHTML",
+                                              PageSize: 1,
+                                              PageIndex: 0
+      }
+      hash = Hash.from_xml(result.body)
+      if hash["SearchDicItemResult"]["ItemCount"] == "0"
+        @result_text = "該当結果はありません"
+      else
+        id = hash["SearchDicItemResult"]["TitleList"]["DicItemTitle"]["ItemID"]
+        result = Faraday.get $get_url,{
+                                        Dic: use,
+                                        Item: id,
+                                        Loc: "",
+                                        Prof: "XHTML"
+        }
+        data = Hash.from_xml(result.body)
+        if use == "EJdict"
+          @result_text = data["GetDicItemResult"]["Body"]["div"]["div"]
+        else use == "Edict"
+          @result_text = data["GetDicItemResult"]["Body"]["div"]["div"]["div"][0]
+        end
+      end
+    end
   end
 
   private

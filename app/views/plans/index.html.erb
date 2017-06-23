@@ -8,6 +8,9 @@
       <% @today_plans.each do |today_plan| %>
       <p><%= today_plan  %></p>
       <% end %>
+      <%= form_tag('/dictionary', :method => :get) do %>
+      <%= submit_tag "辞書" %>
+      <% end %>
       <div id="minicalendar"></div>
     </aside>
     <script>
