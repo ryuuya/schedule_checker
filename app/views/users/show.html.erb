@@ -3,15 +3,15 @@
     <%= stylesheet_link_tag    "show", :media => "all" %>
   </head>
   <body>
-    <h1 class= "show_h1">ユーザー詳細ページ</h1>
-    <h3 class= "show_h3">Name</h3>
-    <p class= "show_p"><%= @user.name %></p>
-    <h3 class= "show_h3">Address</h3>
-    <p class= "show_p"><%= @user.address %></p>
-    <h3 class= "show_h3">Login_id</h3>
-    <p class= "show_p"><%= @user.login_id %></p>
-    <p class= "show_p"><%= link_to "スケジュールへ", index_path %></p>
-    <p class= "show_p"><%= link_to "ユーザー情報編集", user_edit_path %></p>
+    <h1>ユーザー詳細ページ</h1>
+    <h3>Name</h3>
+    <p><%= @user.name %></p>
+    <h3>Address</h3>
+    <p><%= @user.address %></p>
+    <h3>Login_id</h3>
+    <p><%= @user.login_id %></p>
+    <p><%= link_to "スケジュールへ", index_path %></p>
+    <p><%= link_to "ユーザー情報編集", user_edit_path %></p>
   </body>
 </html>
 
