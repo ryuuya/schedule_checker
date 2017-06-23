@@ -39,6 +39,7 @@ gem 'fullcalendar-rails'
 #Jqueryを動作する際に必要な二つのgem
 gem 'momentjs-rails'
 gem 'jquery-turbolinks'
+gem 'xml-simple'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

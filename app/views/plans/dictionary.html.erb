@@ -1,6 +1,7 @@
 <style>
   #search{
     display: inline-block;
+    widtht: 200px;
   }
   .radios{
     display: inline-block;
@@ -15,9 +16,8 @@
 <div id="search">
   <%= form_tag('/dictionary', :method => :get) do %>
   <div id="radio">
-    <%= radio_button 'page', 'category', '和英',{} %>和英
-    <%= radio_button 'page', 'category', '英和',{} %>英和
-    <%= radio_button 'page', 'category', 'Wiki',{} %>Wiki
+    <%= radio_button 'page', 'category', 'EdictJE',{:checked => true} %>和英
+    <%= radio_button 'page', 'category', 'EJdict',{} %>英和
   </div>
   <div>
     <%= label_tag "検索文字:" %>
@@ -29,5 +29,12 @@
 <% end %>
 </div>
 <div id=result>
-  <p>ここに結果が表示されます。</p>
+  <p><%= @result_text %></p>
 </div>
+<p><input type="button" onClick="return_index()" value="戻る" /></p>
+<script>
+  function return_index(){
+    var id = localStorage.getItem("user_id")
+    window.location.href = "/index?user_id=" + id
+  }
+</script>
