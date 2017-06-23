@@ -34,6 +34,10 @@ delete "show/:id", to: "plans#destroy", as: "plans_destroy"
 get "show/:id/edit", to: "plans#edit", as: "plans_edit"
 
 put "show/:id", to: "plans#update", as: "plans_update"
+
+#辞書ページルーティング
+get 'dictionary', to: "plans#dictionary", as: "plans_dictionary"
+
 #---------------------エラールーティング-----------------------
 #error404ページルーティング
 get '*path', controller: 'application', action: 'render_404'

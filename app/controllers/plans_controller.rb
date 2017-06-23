@@ -5,6 +5,7 @@ class PlansController < ApplicationController
     @weather_icons = []
     @plans = []
     $user_id = params[:user_id]
+    p $user_id
     @user_name = User.find($user_id).name
     address = User.find_by(id: params[:user_id]).address
     res = Faraday.get $tenki_url, {q: address, APPID: "c82b64efba2a36c7dc188c410a386457",cnt: 5}
@@ -28,8 +29,7 @@ class PlansController < ApplicationController
       @plans =[]
     end
     today = Time.now
-    p @plans 
-
+    p Plan.exists?
     #カレンダーセット用データ
     @datas = []
     @today_plans = []
@@ -81,7 +81,10 @@ class PlansController < ApplicationController
 
   def update
     all = Plan.maximum("id")
-    length = params[:id]
+    length = params[:id] 
+    if all == nil
+      all = 0
+    end
     if length.to_i == all + 1
       @plan = Plan.new(plan_params)
       id = @plan.user_id
@@ -92,6 +95,9 @@ class PlansController < ApplicationController
       @plan.update(plan_params)
     end
     redirect_to index_path + "?user_id=" + id.to_s
+  end
+  
+  def dictionary
   end
 
   private
