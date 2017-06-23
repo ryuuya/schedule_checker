@@ -1,8 +1,10 @@
+/*日付のデザイン*/
 #show_date {
   text-align: center;
   background-color: #CCFF00;
   margin: 0 0;
 }
+/*全体の中央揃え、デザイン設定*/
 #show_all {
   text-align: center;
 }
@@ -10,26 +12,31 @@
   border: 1px solid #0066ff;
   background-color: #00FF66;
 }
+/*タイトルのcss*/
 #show_title {
   font-size: 2.0em;
   margin-top: 0;
   color: #0000FF;
 }
+/*開始時間のcss*/
 #show_start {
   font-size: 1.7em;
   margin-top: 0;
   color: #FF00FF;
 }
+/*終了時間のcss*/
 #show_end {
   font-size: 1.7em;
   margin-top: 0;
   color: #FF0461;
 }
+/*詳細のcss*/
 #show_detail {
   font-size: 1.7em;
   margin-top: 0;
   color: #FF4500;
 }
+/*ボタンの編集*/
 .button_to {
   display: inline-block;
   margin: 50px;
