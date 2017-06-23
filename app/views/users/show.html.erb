@@ -1,17 +1,16 @@
 <html>
   <head>
-    <%= stylesheet_link_tag    "show", :media => "all" %>
   </head>
   <body>
     <h1>ユーザー詳細ページ</h1>
-    <h3>Name</h3>
+    <h2>Name</h2>
     <p><%= @user.name %></p>
-    <h3>Address</h3>
+    <h2>Address</h2>
     <p><%= @user.address %></p>
-    <h3>Login_id</h3>
+    <h2>Login_id</h2>
     <p><%= @user.login_id %></p>
-    <p><%= link_to "スケジュールへ", index_path %></p>
-    <p><%= link_to "ユーザー情報編集", user_edit_path %></p>
+    <p><%= button_to "スケジュールへ", index_path, :method => "get" %></p>
+    <p><%= button_to "ユーザー情報編集", user_edit_path, :method => "get" %></p>
   </body>
 </html>
 

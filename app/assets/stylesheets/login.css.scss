@@ -1,18 +1,21 @@
-div.new {
+div.login {
   text-align: center;
   border-radius: 5px;
 }
-div.new h2 {
-  text-align: left; 
-  margin-left: auto; 
-  margin-right: auto; 
-  width: 325px;
-}
-p.new_password {
+div.login h2 {
   text-align: left;
   margin-left: auto;
   margin-right: auto;
   width: 325px;
+}
+div.login p  {
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+  width: 325px;
+}
+div.for_new {
+  text-align: right;
 }
 #user_login_id {
   padding:10px;
@@ -22,7 +25,7 @@ p.new_password {
   width:300px;
   border-radius: 5px;
 }
-#user_name {
+#user_password_digest {
   padding:10px;
   color:#000;
   border:solid 1px #ccc;
@@ -30,19 +33,19 @@ p.new_password {
   width:300px;
   border-radius: 5px;
 }
-#user_address {
-  padding:10px;
-  color:#000;
-  border:solid 1px #ccc;
-  margin:0 0 20px;
-  width:322px;
+div.edit {
+  text-align: center;
   border-radius: 5px;
 }
-#user_password {
-  padding:10px;
-  color:#000;
-  border:solid 1px #ccc;
-  margin:0 0 20px;
-  width:300px;
-  border-radius: 5px;
+div.edit h2 {
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+  width: 325px;
+}
+div.edit p  {
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+  width: 325px;
 }
