@@ -1,0 +1,33 @@
+<style>
+  #search{
+    display: inline-block;
+  }
+  .radios{
+    display: inline-block;
+  }
+  #result{
+    display: inline-block;
+    text-align: center;
+    width: 600px;
+  }
+</style>
+<h2>辞書</h2>
+<div id="search">
+  <%= form_tag('/dictionary', :method => :get) do %>
+  <div id="radio">
+    <%= radio_button 'page', 'category', '和英',{} %>和英
+    <%= radio_button 'page', 'category', '英和',{} %>英和
+    <%= radio_button 'page', 'category', 'Wiki',{} %>Wiki
+  </div>
+  <div>
+    <%= label_tag "検索文字:" %>
+    <%= text_field_tag :key_word %>
+  </div>
+  <div>
+    <%= submit_tag :検索 %>
+  </div>
+<% end %>
+</div>
+<div id=result>
+  <p>ここに結果が表示されます。</p>
+</div>
