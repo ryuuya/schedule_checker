@@ -2,18 +2,18 @@
   <head>
   </head>
   <body>
-    <h1>ユーザー情報</h1>
     <div class= "show">
+      <h1>ユーザー情報</h1>
       <table align= "center" class= "show_table">
-        <tr>
+        <tr class= "all_table">
           <td class= "fixation">名前</td>
           <td class= "user"><%= @user.name %></td>
         </tr>
-        <tr>
+        <tr class= "all_table">
           <td class= "fixation">住所</td>
           <td class= "user"><%= @user.address %></td>
         </tr>
-        <tr>
+        <tr class= "all_table">
           <td class= "fixation">ログインID</td>
           <td class= "user"><%= @user.login_id %></td>
         </tr>
