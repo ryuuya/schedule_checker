@@ -20,13 +20,18 @@ class UsersController < ApplicationController
   def check
     @user = User.find_by login_id: (params[:user][:login_id])
     if @user && @user.authenticate(params[:user][:password_digest])
-        redirect_to index_path + "?user_id="+@user.id.to_s
+        redirect_to index_path
+        session[:user_id] = @user.id
     else
         redirect_to  users_login_path
     end
   end
   def login
     @user = User.new
+  end
+  def logout
+    session[:user_id] = nil
+    redirect_to root_path
   end
   def show
     id = params[:id]
