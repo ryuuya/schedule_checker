@@ -1,43 +1,73 @@
 /*日付のデザイン*/
 #show_date {
   text-align: center;
-  background-color: #CCFF00;
   margin: 0 0;
+  background-color: #FCF9BE;
 }
+
 /*全体の中央揃え、デザイン設定*/
 #show_all {
   text-align: center;
+  background-color: #FCF9BE;
 }
-#show_main {
-  border: 1px solid #0066ff;
-  background-color: #00FF66;
-}
+
 /*タイトルのcss*/
+#schedule_comment {
+  margin-top: 0;
+  margin-bottom: 5px;
+  padding-top: 20px;
+}
 #show_title {
-  font-size: 2.0em;
-  margin-top: 0;
-  color: #0000FF;
+  margin: 0 0;
+  margin-left: 475px; 
+  width: 400px;
+  border: solid 1px #000;
 }
+
 /*開始時間のcss*/
+#start_time {
+  display: inline-block;
+}
 #show_start {
-  font-size: 1.7em;
   margin-top: 0;
-  color: #FF00FF;
 }
+#start_comment {
+  margin-bottom: 0;
+}
+
 /*終了時間のcss*/
+#end_time {
+  margin-left: 200px;
+  display: inline-block;
+}
 #show_end {
-  font-size: 1.7em;
   margin-top: 0;
-  color: #FF0461;
 }
+#end_comment {
+  margin-bottom: 0;
+}
+
 /*詳細のcss*/
-#show_detail {
-  font-size: 1.7em;
-  margin-top: 0;
-  color: #FF4500;
+#detail_comment {
+  margin-bottom: 5px;
 }
+#show_detail {
+  margin: 0 0;
+  margin-left: 320px;
+  margin-bottom: 20px;
+  border: solid 1px #000;
+  width: 700px;
+  height: 100px;
+}
+
 /*ボタンの編集*/
 .button_to {
   display: inline-block;
   margin: 50px;
+}
+#delete_button {
+  border-radius: 5px;
+}
+#edit_button {
+  border-radius: 5px;
 }

@@ -1,17 +1,32 @@
+/*全体のcss*/
+#top_all {
+  background-color: #FCF9BE;
+}
 /*ログインボタンのデザイン*/
-#login_button {
+#login_comment {
   text-align: center;
-  font-size: 1.4em;
-  font-weight: bold;
-  padding: 10px 30px;
-  background-color: #006600;
-  color: #fff;
-  border-style: none;
 }
-#login_button:hover {
-  background-color: #00CC00;
-  color: #fff;
+#login_button {
+  display: inline-block;
+  margin-left: 350px;
 }
+#button_login {
+  margin-top: 0;
+  width: 150px;
+  padding: 0.3em 0.3em;
+  text-decoration: none;
+  color: #000;
+  font-size: 20px;
+  border: solid 2px #67c5ff;
+  border-radius: 5px;
+  transition: .4s;
+  background: #fff;
+}
+#button_login:hover {
+  background: #67c5ff;
+  color: white;
+}
+
 /*タイトルのフォントとデザイン*/
 #top_title {
   text-align: center;
@@ -27,23 +42,37 @@
   letter-spacing: 15px;
   margin: 0 0;
 }
+
 /*新規登録ボタンのデザイン*/
-#new_button {
+#new_comment {
   text-align: center;
-  font-size: 1.4em;
-  font-weight: bold;
-  padding: 10px 30px;
-  background-color: #248;
-  color: #fff;
-  border-style: none;
 }
-#new_button:hover {
-  background-color: #24d;
-  color: #fff;
+#new_button {
+  display: inline-block;
+  margin-left: 250px;
 }
+#button_new {
+  width: 150px;
+  padding: 0.3em 0.3em;
+  text-decoration: none;
+  color: #000;
+  font-size: 20px;
+  border: solid 2px #67c5ff;
+  border-radius: 5px;
+  transition: .4s;
+  background: #fff;
+}
+#button_new:hover {
+  background: #67c5ff;
+  color: white;
+}
+
 /*ボタンの大きさ*/
 input[type=submit] {
   width: 100px;
   height: 50px;
   font-size: 0.9em;
+}
+.button_to {
+  margin-top: 0;
 }

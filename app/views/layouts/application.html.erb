@@ -6,6 +6,12 @@ header{
   border-bottom: solid 1px #000;
   text-align:right;
 }
+#name{
+  display:inline-block;
+}
+#logout{
+  display:inline-block;
+}
 </style>
   <head>
     <title>ScheduleChecker</title>
@@ -17,21 +23,25 @@ header{
 
   <body>
     <header>
-      <p id="name"></p>
+      <div id="user_data">
+        <p id="name"></p>
+        <div id="logout">
+          <%= form_tag('/logout') do %>
+          <p id="logout_button"><%= submit_tag "ログアウト"%></p>
+          <% end %>
+        </div>
+      </div>
     </header>
     <%= yield %>
   </body>
   <script>
-    id = localStorage.getItem("user_id");
-    if (id != null){
-      name = localStorage.getItem("user_name");
-      var user = document.getElementById("name");
-      user.innerHTML = "ようこそ<a href=/users/show/" + id + ">"+ name + "</a>さん";
-      var button = document.createElement("button");
-      button.innerText = "ログアウト";
-      button.onclick = logout;
-      user.append(button);
+    id = "<%= session[:user_id] %>";
+    if (id != ""){
+      document.getElementById("name").innerHTML = localStorage.getItem("user_name")
+    }else{
+      document.getElementById("user_data").style.display="none"
     }
+    
   function logout(){
     localStorage.removeItem("user_id");
     localStorage.removeItem("user_name");
