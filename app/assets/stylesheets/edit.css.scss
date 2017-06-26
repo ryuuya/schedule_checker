@@ -1,30 +1,31 @@
 /*全体の中央揃え、デザイン*/
 #edit_main{
+  background-color: #FCF9BE;
   text-align: center;
-  background-color: #00FF66;
 }
+
 /*タイトルのデザイン*/
 #main_title {
-  background-color: #CCFF00;
   margin: 0 0;
   padding: 10px; 
 }
+
 /*ユーザーIDのcss*/
 #plan_user_id {
   width: 3%;
   text-align: center;
-  background-color: #00CED1;
-  border-radius: 50px;
+  border-radius: 5px;
 }
+
 /*予定のcss*/
 #plan_title {
   width: 60%;
   height: 30px;
   text-align: center;
   font-size: 1.1em;
-  background-color: #FFAAFF;
-  border-radius: 10px;
+  border-radius: 5px;
 }
+
 /*開始時間のcss*/
 #edit_start {
   display: inline-block;
@@ -33,30 +34,29 @@
 #plan_start_at_1i {
   width: 80px;
   height: 25px;
-  border-radius: 20px;
+  border-radius: 5px;
 }
 #plan_start_at_2i {
   width: 80px;
   height: 25px;
-  border-radius: 20px;
+  border-radius: 5px;
 }
 #plan_start_at_3i {
   width: 80px;
   height: 25px;
-  border-radius: 20px;
+  border-radius: 5px;
 }
 #plan_start_at_4i {
   width: 80px;
-  height: 40px;
-  font-size: 1.3em;
-  border-radius: 30px;
+  height: 25px;
+  border-radius: 5px;
 }
 #plan_start_at_5i {
   width: 80px;
-  height: 40px;
-  font-size: 1.3em;
-  border-radius: 30px;
+  height: 25px;
+  border-radius: 5px;
 }
+
 /*終了時間のcss*/
 #edit_end {
   display: inline-block;
@@ -65,37 +65,37 @@
 #plan_end_at_1i {
   width: 80px;
   height: 25px;
-  border-radius: 20px;
+  border-radius: 5px;
 }
 #plan_end_at_2i {
   width: 80px;
   height: 25px;
-  border-radius: 20px;
+  border-radius: 5px;
 }
 #plan_end_at_3i {
   width: 80px;
   height: 25px;
-  border-radius: 20px;
+  border-radius: 5px;
 }
 #plan_end_at_4i {
   width: 80px;
-  height: 40px;
-  font-size: 1.3em;
-  border-radius: 30px;
+  height: 24px;
+  border-radius: 5px;
 }
 #plan_end_at_5i {
   width: 80px;
-  height: 40px;
-  font-size: 1.3em;
-  border-radius: 30px;
+  height: 25px;
+  border-radius: 5px;
 }
+
 /*詳細のcss*/
 #plan_detail {
   width: 900px;
   height: 200px;
   font-size: 1.3em;
-  background-color: #BBBBBB;
+  border-radius: 5px;
 }
+
 /*色選択のcss*/
 #edit_color {
   padding-right: 150px;
@@ -104,12 +104,14 @@
 #plan_color_id {
   width: 80px;
   height: 30px;
-  border-radius: 40px;
+  border-radius: 5px;
 }
+
 /*登録ボタンのcss*/
 #edit_save {
   display: inline-block;
   padding-left: 500px;
-  border-radius: 20px;
 }
-
+#save_button {
+  border-radius: 5px;
+}
