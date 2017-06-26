@@ -40,6 +40,8 @@ get "show/:id/edit", to: "plans#edit", as: "plans_edit"
 
 put "show/:id", to: "plans#update", as: "plans_update"
 
+post "logout", to: "users#logout", as: "user_logout"
+
 #辞書ページルーティング
 get 'dictionary', to: "plans#dictionary", as: "plans_dictionary"
 

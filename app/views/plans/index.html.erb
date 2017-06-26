@@ -22,8 +22,8 @@
 
     <script>
     var id = localStorage.getItem("user_id");
-    if(id == null || id != <%= params[:user_id] %>){
-      localStorage.setItem("user_id",<%= params[:user_id] %>);
+    if(id == null || id != <%= @user_id %>){
+      localStorage.setItem("user_id",<%= session[:user_id] %>);
       localStorage.setItem("user_name","<%= @user_name %>");
     }
     $(document).ready(function(){
@@ -61,7 +61,7 @@
     
         /* 日付クリック時の処理  */
         dayClick: function(date) {
-        window.location.href = "/show/" + <%= @length %> + "/edit?user_id=" + <%= params[:user_id] %>
+        window.location.href = "/show/" + <%= @length %> + "/edit"
         }
       });
       $('#minicalendar').fullCalendar({
@@ -94,7 +94,7 @@
         /* 日付クリック時の処理  */
         dayClick: function(date) {
           var day = date.format( 'YYYY-MM-DD' );
-          window.location.href = "/index?day=" + day + "&user_id="+<%= params[:user_id] %>
+          window.location.href = "/index?day=" + day
         }
       });
     });
