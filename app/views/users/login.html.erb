@@ -9,11 +9,11 @@
         <p><%= user.text_field :login_id %></p>
         <h2>Password</h2>
         <p><%= user.password_field :password_digest %></p>
-        <p class= "login_button"><%= user.submit(["Login"]) %></p>
+        <p class= "login_button"><%= user.submit(["Login"], id: "login_submit") %></p> 
       <% end %>
     </div>
     <div class= "for_new">
-      <p><%= button_to "新規登録", users_new_path, :method => "get" %></p>
+      <p><%= button_to "新規登録", users_new_path, :id => "login_submit", :method => "get" %></p>
     </div>
   </body>
 </html>
