@@ -6,15 +6,17 @@
     <%= form_for @new do |new| %>
       <div class= "new_all">
         <div class= "new">
-          <h2>LoginId</h2>
+          <h2>ログインID</h2>
           <p><%= new.text_field :login_id %></p>
-          <h2>Name</h2>
+          <p class="caution"> ※16文字まで<p>
+          <h2>名前</h2>
           <p><%= new.text_field :name %></p>
-          <h2>Address</h2>
+          <h2>住所</h2>
           <p><%= new.select 'address', options_for_select(["","北海道","青森県","岩手県","秋田県","宮城県","山形県","福島県","茨城県","栃木県","群馬県","埼玉県","神奈川県","東京都","千葉県","新潟県","富山県","石川県","福井県","岐阜県","長野県","山梨県","静岡県","愛知県","滋賀県","三重県","京都府","奈良県","和歌山県","大阪府","兵庫県","鳥取県","岡山県","島根県","広島県","山口県","徳島県","香川県","高知県","愛媛県","大分県","福岡県","佐賀県","長崎県","熊本県","宮崎県","鹿児島県","沖縄県"]) %></p>
-          <h2>Password</h2>
-          <p><%= new.password_field :password %></p><br>
-          <p class="new_password"><%= new.submit id: "new_submit" %></p>
+          <h2>パスワード</h2>
+          <p><%= new.password_field :password %></p>
+          <p class="caution"> ※16文字まで<p><br>
+          <p class="new_password"><%= new.submit value: "登録", id: "new_submit" %></p>
         </div>
       </div>
     <% end %>
