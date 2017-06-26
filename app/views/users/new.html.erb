@@ -2,11 +2,6 @@
   <head>
   </head>
   <body>
-    <% if flash[:alert] %>
-      <div class="alert alert-danger">
-        <%= flash[:alert] %>
-      </div>
-    <% end %>
     <%= form_for @new do |new| %>
       <div class= "new">
        <h1>ユーザー登録</h1>
@@ -21,6 +16,11 @@
       <h2>パスワード</h2>
       <p><%= new.password_field :password, :maxlength => 16 %></p>
       <p class="caution"> ※16文字まで<p><br>
+      <% if flash[:alert] %>
+        <div class="alert_denger">
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
       <p class="new_password"><%= new.submit value: "登録", id: "new_submit" %></p>
       </div>
     <% end %>
