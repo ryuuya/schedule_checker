@@ -23,11 +23,13 @@ header{
 
   <body>
     <header>
-      <p id="name"></p>
-      <div id="logout">
-        <%= form_tag('/logout') do %>
-        <p id="logout_button"><%= submit_tag "ログアウト"%></p>
-        <% end %>
+      <div id="user_data">
+        <p id="name"></p>
+        <div id="logout">
+          <%= form_tag('/logout') do %>
+          <p id="logout_button"><%= submit_tag "ログアウト"%></p>
+          <% end %>
+        </div>
       </div>
     </header>
     <%= yield %>
