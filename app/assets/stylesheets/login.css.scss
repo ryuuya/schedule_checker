@@ -15,7 +15,8 @@ div.login p  {
   width: 325px;
 }
 div.for_new {
-  text-align: right;
+  text-align: center;
+  font-size: 20px;
 }
 #user_login_id {
   padding:10px;
@@ -49,9 +50,10 @@ div.for_new {
   color: #000;
   font-size: 20px;
   border: solid 2px #67c5ff;
-  border-radius: 3px;
+  border-radius: 5px;
   transition: .4s;
   background: #fff;
+  margin-bottom: 30px;
 }
 #login_submit:hover {
   background: #67c5ff;
