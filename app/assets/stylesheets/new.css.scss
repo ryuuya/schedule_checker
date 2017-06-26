@@ -25,6 +25,13 @@ p.caution {
   width: 325px;
   color: #B8B6B6;
 }
+p.caution_red {
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+  width: 325px;
+  color: #FE7474;
+}
 #user_login_id {
   padding:10px;
   color:#000;
@@ -87,17 +94,25 @@ table.show_table {
   border-collapse: collapse;
   border: 3px solid #B8B6B6;
 }
-tr.all_table {
-  
+th.all_table  {
+  border: 1px solid #B8B6B6;
+  width: 200px;
+  height: 100px;
 }
 td.user {
   font-size: 20px;
   font-weight: normal;
-  background-color: #E2E1E1; 
+  background-color: #E2E1E1;
+  border: 1px solid #B8B6B6;
+  width: 200px;
+  height: 100px;
 }
 td.fixation {
   font-size: 25px;
   font-weight: bold;
+  border: 1px solid #B8B6B6;
+  width: 200px;
+  height: 100px;
 }
 #show_submit {
   display: inline-block;
