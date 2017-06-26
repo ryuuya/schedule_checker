@@ -1,3 +1,3 @@
 class Color < ActiveRecord::Base
-  has_many :plans
+  #has_many :plans
 end

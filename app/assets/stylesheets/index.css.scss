@@ -14,6 +14,17 @@ div {
   margin-left: 30px;
 }
 
+#calendar th {
+  text-align:center;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+  
+}
+#calendar .fc-day-header{
+  height: 2em ;
+  margin: 0 0;
+  padding: 0 0;
+}
 #minicalendar {
   max-width: 220px;
   margin: 0 auto;

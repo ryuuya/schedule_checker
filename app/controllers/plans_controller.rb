@@ -1,16 +1,19 @@
 class PlansController < ApplicationController
   require 'xmlsimple'
-  $user_id
   $tenki_url = "http://api.openweathermap.org/data/2.5/forecast"
   $search_url = "http://public.dejizo.jp/NetDicV09.asmx/SearchDicItemLite"
   $get_url = "http://public.dejizo.jp/NetDicV09.asmx/GetDicItemLite"
   def index
     @weather_icons = []
-    @plans = []
-    $user_id = params[:user_id]
-    p $user_id
-    @user_name = User.find($user_id).name
-    address = User.find_by(id: params[:user_id]).address
+    user = User.find(session[:user_id])
+    @user_id = session[:user_id]
+    if user.plans.exists? == true
+      @plans = user.plans
+    else
+      @plans = []
+    end
+    @user_name = User.find(@user_id).name
+    address = user.address
     res = Faraday.get $tenki_url, {q: address, APPID: "c82b64efba2a36c7dc188c410a386457",cnt: 5}
     tenkis = JSON.parse(res.body)
     tenkis["list"].each do |tenki|
@@ -18,13 +21,12 @@ class PlansController < ApplicationController
         @weather_icons.push(weather["icon"])
       end
     end
-    
     if Plan.exists?
       @length =  Plan.maximum("id") + 1
-      if Plan.exists?(:user_id => $user_id)
-        @plans = Plan.where(user_id: $user_id.to_i)
+      if Plan.exists?(:user_id => @user_id)
+        @plans = Plan.where(user_id: @user_id.to_i)
       else 
-        Plan.exists?(:user_id => $user_id)
+        Plan.exists?(:user_id => @user_id)
         @plans =[]
       end
     else
@@ -43,13 +45,13 @@ class PlansController < ApplicationController
         'title' => data['title'],
         'start' => data['start_at'],
         'end' => data['end_at'],
-        'url' => '/show/' + data['id'].to_s + "?user_id=" + params[:user_id],
+        'url' => '/show/' + data['id'].to_s,
         'color' => "#" + data.color.color_code
       ]
       if today.strftime("%m%d") == data['start_at'].strftime("%m%d")
         array = {}
         array["title"] = data['title']
-        array["link"] = '/show/' + data['id'].to_s + "?user_id=" + params[:user_id]
+        array["link"] = '/show/' + data['id'].to_s
         @today_plans.push(array)
       end
     end
