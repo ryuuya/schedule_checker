@@ -3,14 +3,17 @@
   </head>
   <body>
     <h1>ユーザー詳細ページ</h1>
-    <h2>Name</h2>
-    <p><%= @user.name %></p>
-    <h2>Address</h2>
-    <p><%= @user.address %></p>
-    <h2>Login_id</h2>
-    <p><%= @user.login_id %></p>
-    <p><%= button_to "スケジュールへ", index_path, :method => "get" %></p>
-    <p><%= button_to "ユーザー情報編集", user_edit_path, :method => "get" %></p>
+    <div class= "show">
+      <h2>Name</h2>
+      <p><%= @user.name %></p>
+      <h2>Address</h2>
+      <p><%= @user.address %></p>
+      <h2>Login_id</h2>
+      <p><%= @user.login_id %></p>
+    </div>
+    <div class= "button"
+      <p><%= button_to "スケジュールへ", index_path, :id => "show_submit", :method => "get" %><%= button_to "ユーザー情報編集", user_edit_path, :id => "show_submit", :method => "get" %></p>
+    </div>
   </body>
 </html>
 

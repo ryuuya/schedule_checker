@@ -10,11 +10,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @check = User.find_by login_id: (params[:user][:login_id])
-    if @check.login_id == @user.login_id
-      redirect_to  users_new_path
-    else
+    if @check == nil 
       @user.save
       redirect_to index_path + "?user_id=" + @user.id.to_s
+    else
+        redirect_to  users_new_path
     end
   end
   def check
