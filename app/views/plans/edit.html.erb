@@ -24,14 +24,14 @@
         </p>
         <p id="edit_detail">
           <%= i.label '[詳細]' %><br>
-          <%= i.text_field 'detail', :size => "80" %>
+          <%= i.text_field 'detail' %>
         </p>
         <p id="edit_color">
           <%= i.label '[色選択]' %><br>
           <%= i.collection_select 'color_id', Color.all, :id, :color_name, :include_blank => true %>
         </p>
         <p id="edit_save">
-          <%= i.submit '登録' %>
+          <%= i.submit '登録', :id => "save_button" %>
         </p>
 
       <% end %>

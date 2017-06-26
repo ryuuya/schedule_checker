@@ -1,0 +1,46 @@
+/*辞書のタイトル*/
+#dictionary_title {
+  text-align: center;
+}
+
+/*和英、英和の選択*/
+#radio {
+  text-align: center;
+}
+#page_category_edictje {
+ 
+}
+#page_category_ejdict {
+  margin-left: 100px;
+}
+
+/*検索文字の配置*/
+#serch_word {
+  text-align: center;
+  margin: 20px;
+}
+#key_word {
+  width: 40%;
+  height: 20px;
+  font-size: 1.1em;
+}
+
+/*検索ボタンの配置*/
+#serch_button {
+  text-align: center;
+  margin-top: 10px;
+}
+
+/*検索結果の配置*/
+#result {
+  padding: 50px;
+}
+#result_text {
+  text-align: center;
+  font-size: 1.4em;
+}
+
+/*戻るボタンの配置*/
+#back_button {
+  text-align: center;
+}
