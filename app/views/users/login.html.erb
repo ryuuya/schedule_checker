@@ -2,8 +2,8 @@
   <head>
   </head>
   <body>
-      <h1>ログイン画面</h1>
     <div class= "login">
+      <h1>ログイン画面</h1>
       <%= form_for @user, :url => check_path, :html => { :method => :post } do |user| %>
         <h2>ログインID</h2>
         <p><%= user.text_field :login_id %></p>
