@@ -14,7 +14,7 @@ class UsersController < ApplicationController
       @user.save
       redirect_to index_path + "?user_id=" + @user.id.to_s
     else
-        redirect_to  users_new_path
+      redirect_to  users_new_path
     end
   end
   def check
