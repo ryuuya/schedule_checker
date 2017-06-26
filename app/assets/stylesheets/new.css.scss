@@ -8,11 +8,22 @@ div.new h2 {
   margin-right: auto; 
   width: 325px;
 }
+p {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
 p.new_password {
   text-align: left;
   margin-left: auto;
   margin-right: auto;
   width: 325px;
+}
+p.caution {
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+  width: 325px;
+  color: #B8B6B6;
 }
 #user_login_id {
   padding:10px;
@@ -21,6 +32,7 @@ p.new_password {
   margin:0 0 20px;
   width:300px;
   border-radius: 5px;
+  margin-bottom: 0px;
 }
 #user_name {
   padding:10px;
@@ -45,6 +57,7 @@ p.new_password {
   margin:0 0 20px;
   width:300px;
   border-radius: 5px;
+  margin-bottom: 0px;
 }
 #new_submit {
   display: inline-block;
@@ -70,9 +83,27 @@ div.button {
   text-align: center;
   border-radius: 5px;
 }
+table.show_table {
+  border-collapse: collapse;
+  border: 3px solid #B8B6B6;
+}
+th,td  {
+  border: 1px solid #B8B6B6;
+  width: 200px;
+  height: 100px;
+}
+td.user {
+  font-size: 20px;
+  font-weight: normal;
+  background-color: #E2E1E1; 
+}
+td.fixation {
+  font-size: 25px;
+  font-weight: bold;
+}
 #show_submit {
   display: inline-block;
-  width: 150px;
+  width: 180px;
   padding: 0.3em 0.3em;
   text-decoration: none;
   color: #000;
