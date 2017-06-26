@@ -12,5 +12,10 @@
         <p class= "login_button"><%= user.submit(["Login"], value: "ログイン", id: "login_submit") %></p> 
       <% end %>
     </div>
+    <% if flash[:alert] %>
+      <div class="alert_denger">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
   </body>
 </html>

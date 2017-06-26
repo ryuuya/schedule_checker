@@ -10,8 +10,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @check = User.find_by login_id: (params[:user][:login_id])
-    if @check == @user.login_id
-      redirect_to  users_new_path
+    if @check != nil
+      redirect_to  users_new_path, action: 'users_login', alert: "※ログインできませんでした。もう一度お確かめください。"
     else
       @user.save
       session[:user_id] = @user.id
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
         redirect_to index_path
         session[:user_id] = @user.id
     else
-        redirect_to  users_login_path
+        redirect_to users_login_path, action: 'users_login', alert: "※ログインできませんでした。もう一度お確かめください。"
     end
   end
   def login
