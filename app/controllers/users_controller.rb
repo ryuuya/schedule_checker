@@ -14,7 +14,8 @@ class UsersController < ApplicationController
       redirect_to  users_new_path
     else
       @user.save
-      redirect_to index_path + "?user_id=" + @user.id.to_s
+      session[:user_id] = @user.id
+      redirect_to index_path
     end
   end
   def check

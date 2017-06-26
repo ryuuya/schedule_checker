@@ -37,15 +37,9 @@ header{
   <script>
     id = "<%= session[:user_id] %>";
     if (id != ""){
-      document.getElementById("name").innerHTML = localStorage.getItem("user_name")
+      link = document.getElementById("name");
     }else{
       document.getElementById("user_data").style.display="none"
     }
-    
-  function logout(){
-    localStorage.removeItem("user_id");
-    localStorage.removeItem("user_name");
-    window.location.href = "/"
-  }
   </script>
 </html>
