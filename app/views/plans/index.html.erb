@@ -6,7 +6,7 @@
     <aside id="aside">
       <p>今日の予定</p>
       <% @today_plans.each do |today_plan| %>
-      <p><%= today_plan  %></p>
+      <p><a href=<%= today_plan['link']  %>><%= today_plan['title']  %></a></p>
       <% end %>
       <%= form_tag('/dictionary', :method => :get) do %>
       <%= submit_tag "辞書" %>
