@@ -2,15 +2,26 @@
   <head>
   </head>
   <body>
-    <h1>ユーザー詳細ページ</h1>
-    <h2>Name</h2>
-    <p><%= @user.name %></p>
-    <h2>Address</h2>
-    <p><%= @user.address %></p>
-    <h2>Login_id</h2>
-    <p><%= @user.login_id %></p>
-    <p><%= button_to "スケジュールへ", index_path, :method => "get", :params =>{user_id: @user.id } %></p>
-    <p><%= button_to "ユーザー情報編集", user_edit_path, :method => "get" %></p>
+    <h1>ユーザー情報</h1>
+    <div class= "show">
+      <table align= "center" class= "show_table">
+        <tr>
+          <td class= "fixation">名前</td>
+          <td class= "user"><%= @user.name %></td>
+        </tr>
+        <tr>
+          <td class= "fixation">住所</td>
+          <td class= "user"><%= @user.address %></td>
+        </tr>
+        <tr>
+          <td class= "fixation">ログインID</td>
+          <td class= "user"><%= @user.login_id %></td>
+        </tr>
+      </table>
+    </div>
+    <div class= "button">
+      <p><%= button_to "スケジュールへ", index_path, :id => "show_submit", :method => "get" %><%= button_to "ユーザー情報編集", user_edit_path, :id => "show_submit", :method => "get" %></p>
+    </div>
   </body>
 </html>
 

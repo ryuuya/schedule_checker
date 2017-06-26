@@ -15,7 +15,8 @@ div.login p  {
   width: 325px;
 }
 div.for_new {
-  text-align: right;
+  text-align: center;
+  font-size: 20px;
 }
 #user_login_id {
   padding:10px;
@@ -33,6 +34,31 @@ div.for_new {
   width:300px;
   border-radius: 5px;
 }
+#user_password {
+  padding:10px;
+  color:#000;
+  border:solid 1px #ccc;
+  margin:0 0 20px;
+  width:300px;
+  border-radius: 5px;
+}
+#login_submit {
+  display: inline-block;
+  width: 150px;
+  padding: 0.3em 0.3em;
+  text-decoration: none;
+  color: #000;
+  font-size: 20px;
+  border: solid 2px #67c5ff;
+  border-radius: 5px;
+  transition: .4s;
+  background: #fff;
+  margin-bottom: 30px;
+}
+#login_submit:hover {
+  background: #67c5ff;
+  color: white;
+}
 div.edit {
   text-align: center;
   border-radius: 5px;
@@ -48,4 +74,20 @@ div.edit p  {
   margin-left: auto;
   margin-right: auto;
   width: 325px;
+}
+#edit_submit {
+  display: inline-block;
+  width: 150px;
+  padding: 0.3em 0.3em;
+  text-decoration: none;
+  color: #000;
+  font-size: 20px;
+  border: solid 2px #67c5ff;
+  border-radius: 3px;
+  transition: .4s;
+  background: #fff;
+}
+#edit_submit:hover {
+  background: #67c5ff;
+  color: white; 
 }

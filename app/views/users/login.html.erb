@@ -5,15 +5,15 @@
       <h1>ログイン画面</h1>
     <div class= "login">
       <%= form_for @user, :url => check_path, :html => { :method => :post } do |user| %>
-        <h2>LoginId</h2>
+        <h2>ログインID</h2>
         <p><%= user.text_field :login_id %></p>
-        <h2>Password</h2>
+        <h2>パスワード</h2>
         <p><%= user.password_field :password_digest %></p>
-        <p class= "login_button"><%= user.submit(["Login"]) %></p>
+        <p class= "login_button"><%= user.submit(["Login"], value: "ログイン", id: "login_submit") %></p> 
       <% end %>
     </div>
     <div class= "for_new">
-      <p><%= button_to "新規登録", users_new_path, :method => "get" %></p>
+      <p><%= link_to "新規登録", users_new_path, :id => "login_link", :method => "get" %></p>
     </div>
   </body>
 </html>
