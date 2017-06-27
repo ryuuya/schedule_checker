@@ -36,16 +36,14 @@ header{
   </body>
   <script>
     id = "<%= session[:user_id] %>";
+    user_id = localStorage.getItem("user_id");
+    user_name = localStorage.getItem("user_name");
+    console.log(user_name)
     if (id != ""){
-      document.getElementById("name").innerHTML = localStorage.getItem("user_name")
+      link = document.getElementById("name");
+      link.innerHTML = "<a href='users/show/"  + user_id  + "'>"+ user_name  + "</a>";
     }else{
       document.getElementById("user_data").style.display="none"
     }
-    
-  function logout(){
-    localStorage.removeItem("user_id");
-    localStorage.removeItem("user_name");
-    window.location.href = "/"
-  }
   </script>
 </html>

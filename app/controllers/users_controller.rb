@@ -14,7 +14,8 @@ class UsersController < ApplicationController
       redirect_to  users_new_path, action: 'users_login', alert: "※既に存在するIDです。別のIDで登録してください。"
     else
       @user.save
-      redirect_to index_path + "?user_id=" + @user.id.to_s
+      session[:user_id] = @user.id
+      redirect_to index_path
     end
   end
   def check

@@ -18,9 +18,9 @@
         <p id="detail_comment">詳細</p>
         <p id="show_detail"><%= @plan.detail %></p>
         <%= button_to "削除", plans_destroy_path + "?user_id" + @plan.user_id.to_s, :method => :delete, :id => "delete_button" %>
-        <%= button_to "編集", plans_edit_path, :id => "edit_button", :method => :get, :params =>{user_id: @plan.user_id.to_s}  %>
+        <%= button_to "編集", plans_edit_path, :id => "edit_button", :method => :get %>
       </div>
-      <%= link_to "戻る", index_path + "?user_id="+@plan.user_id.to_s %>
+      <%= link_to "戻る", index_path  %>
     </div>
   </body>
 </html>
