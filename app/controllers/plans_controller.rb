@@ -82,8 +82,8 @@ class PlansController < ApplicationController
   def create
     @plan = Plan.new(plan_params)
     id = @plan.user_id
-    @plan.save
-    redirect_to index_path + "?user_id=" + id.to_s
+    @plan.save!
+    redirect_to index_path 
   end
 
   def edit

@@ -5,8 +5,10 @@
     <h1 id="show_date"><%= @plan.start_at.month %>/<%= @plan.start_at.day %></h1>
     <div id="show_all">
       <div id="show_main">
-        <p id="schedule_comment">予定</p>
-        <p id="show_title"><%= @plan.title %></p>
+        <div id="title_eria">
+          <p id="schedule_comment">予定</p>
+          <p id="show_title"><%= @plan.title %></p>
+        </div>
         <div id="start_time">
           <p id="start_comment">開始時間</p>
           <p id="show_start"><%= @plan.start_at.strftime("%H:%M") %></p>
@@ -15,8 +17,10 @@
           <p id="end_comment">終了時間</p>
           <p id="show_end"><%= @plan.end_at.strftime("%H:%M") %></p>
         </div>
-        <p id="detail_comment">詳細</p>
-        <p id="show_detail"><%= @plan.detail %></p>
+        <div id="detail_eria">
+          <p id="detail_comment">詳細</p>
+          <p id="show_detail"><%= @plan.detail %></p>
+        </div>
         <%= button_to "削除", plans_destroy_path + "?user_id" + @plan.user_id.to_s, :method => :delete, :id => "delete_button" %>
         <%= button_to "編集", plans_edit_path, :id => "edit_button", :method => :get %>
       </div>
