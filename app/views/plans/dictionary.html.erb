@@ -17,7 +17,7 @@
 <div id=result>
   <p id="result_text"><%= @result_text %></p>
 </div>
-<p id="back_button"><input type="button" onClick="return_index()" value="戻る" /></p>
+<p id="back_button"><%= link_to "戻る", index_path %></p>
 <script>
   function return_index(){
     var id = localStorage.getItem("user_id")
