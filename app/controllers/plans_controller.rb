@@ -4,158 +4,196 @@ class PlansController < ApplicationController
   $search_url = "http://public.dejizo.jp/NetDicV09.asmx/SearchDicItemLite"
   $get_url = "http://public.dejizo.jp/NetDicV09.asmx/GetDicItemLite"
   def index
-    @weather_icons = []
-    user = User.find(session[:user_id])
-    @user_id = session[:user_id]
-    if user.plans.exists? == true
-      @plans = user.plans
+    if res = login_check
+      redirect_to root_path
     else
-      @plans = []
-    end
-    @user_name = User.find(@user_id).name
-    address = user.address
-    res = Faraday.get $tenki_url, {q: address, APPID: "c82b64efba2a36c7dc188c410a386457",cnt: 5}
-    tenkis = JSON.parse(res.body)
-    tenkis["list"].each do |tenki|
-      tenki["weather"].each do |weather|
-        @weather_icons.push(weather["icon"])
+      @weather_icons = []
+      user = User.find(session[:user_id])
+      @user_id = session[:user_id]
+      if user.plans.exists? == true
+        @plans = user.plans
+      else
+        @plans = []
       end
-    end
-    if Plan.exists?
-      @length =  Plan.maximum("id") + 1
-      if Plan.exists?(:user_id => @user_id)
-        @plans = Plan.where(user_id: @user_id.to_i)
-      else 
-        Plan.exists?(:user_id => @user_id)
+      @user_name = User.find(@user_id).name
+      address = user.address
+      res = Faraday.get $tenki_url, {q: address, APPID: "c82b64efba2a36c7dc188c410a386457",cnt: 5}
+      tenkis = JSON.parse(res.body)
+      tenkis["list"].each do |tenki|
+        tenki["weather"].each do |weather|
+          @weather_icons.push(weather["icon"])
+        end
+      end
+      if Plan.exists?
+        @length =  Plan.maximum("id") + 1
+        if Plan.exists?(:user_id => @user_id)
+          @plans = Plan.where(user_id: @user_id.to_i)
+        else 
+          Plan.exists?(:user_id => @user_id)
+          @plans =[]
+        end
+      else
+        @length = 1  
         @plans =[]
       end
-    else
-      @length = 1  
-      @plans =[]
-    end
-    today = Time.now
-    p Plan.exists?
+      today = Time.now
+      p Plan.exists?
 
-    #カレンダーセット用データ
-    @datas = []
-    @today_plans = []
-    @today_plans_link = []
-    @plans.each do |data| 
-      @datas += [
-        'title' => data['title'],
-        'start' => data['start_at'],
-        'end' => data['end_at'],
-        'url' => '/show/' + data['id'].to_s,
-        'color' => "#" + data.color.color_code
-      ]
-      if today.strftime("%m%d") == data['start_at'].strftime("%m%d")
-        array = {}
-        array["title"] = data['title']
-        array["link"] = '/show/' + data['id'].to_s
-        @today_plans.push(array)
+      #カレンダーセット用データ
+      @datas = []
+      @today_plans = []
+      @today_plans_link = []
+      @plans.each do |data| 
+        @datas += [
+          'title' => data['title'],
+          'start' => data['start_at'],
+          'end' => data['end_at'],
+          'url' => '/show/' + data['id'].to_s,
+          'color' => "#" + data.color.color_code
+        ]
+        if today.strftime("%m%d") == data['start_at'].strftime("%m%d")
+          array = {}
+          array["title"] = data['title']
+          array["link"] = '/show/' + data['id'].to_s
+          @today_plans.push(array)
+        end
+      end
+      if params[:day] == nil
+      @day = today.strftime("%Y-%m-%d")
+        @disp = "agendaWeek"
+      else
+        @day = params[:day]
+        @disp = "agendaDay"
       end
     end
-    if params[:day] == nil
-      @day = today.strftime("%Y-%m-%d")
-      @disp = "agendaWeek"
-    else
-      @day = params[:day]
-      @disp = "agendaDay"
-    end
   end
-
   def show
-    @plan = Plan.find(params[:id])
+    if res = login_check
+      redirect_to root_path
+    else
+      @plan = Plan.find(params[:id])
+    end
   end
 
   def destroy
-    @plan = Plan.find(params[:id])
-    @plan.user_id = session[:user_id]
-    @plan.destroy
-    redirect_to index_path 
-  end
-
-  def new
-    @plan = Plan.new()
-  end
-
-  def create
-    @plan = Plan.new(plan_params)
-    @plan.user_id = session[:user_id]
-    if @plan.start_at > @plan.end_at
-      redirect_to plans_new_path(:id => Plan.maximum("id") + 1),alert: "時間が不正です。"
+    if res = login_check
+      redirect_to root_path
     else
-      @plan.save!
+      @plan = Plan.find(params[:id])
+      @plan.user_id = session[:user_id]
+      @plan.destroy
       redirect_to index_path 
     end
   end
 
-  def edit
-    all = Plan.maximum("id")
-    if all == nil
-      length = 1
-      @plan = Plan.new()
+  def new
+    if res = login_check
+      redirect_to root_path
     else
-      length = params[:id]
-      if length.to_i == all + 1
-        @plan = Plan.new()
+      @plan = Plan.new()
+    end
+  end
+
+  def create
+    if res = login_check
+      redirect_to root_path
+    else
+    login_check
+      @plan = Plan.new(plan_params)
+      @plan.user_id = session[:user_id]
+      if @plan.start_at > @plan.end_at
+        redirect_to plans_new_path(:id => Plan.maximum("id") + 1),alert: "時間が不正です。"
       else
-        @plan = Plan.find(params[:id])
+        @plan.save!
+        redirect_to index_path 
       end
     end
   end
 
-  def update
-    @plan = Plan.find(params[:id])
-    @plan.user_id = session[:user_id]
-    work = Plan.new(plan_params)
-    if work[:start_at] > work[:end_at]
-      redirect_to plans_edit_path(:id => @plan.id),alert: "時間が不正です。"
+  def edit
+    if res = login_check
+      redirect_to root_path
     else
-    @plan.update(plan_params)
-    redirect_to index_path
-    end
-  end
-  
-  def dictionary
-    if params[:page] != nil
-      use =  params[:page][:category]
-    end
-    key = params[:key_word]
-    if key == nil
-      @result_text = "ここに検索結果が表示されます"
-    else
-      result = Faraday.get $search_url, {
-                                              Dic: use,
-                                              Word: key,
-                                              Scope: "HEADWORD",
-                                              Match: "EXACT",
-                                              Merge: "OR",
-                                              Prof: "XHTML",
-                                              PageSize: 1,
-                                              PageIndex: 0
-      }
-      hash = Hash.from_xml(result.body)
-      if hash["SearchDicItemResult"]["ItemCount"] == "0"
-        @result_text = "該当結果はありません"
+      all = Plan.maximum("id")
+      if all == nil
+        length = 1
+        @plan = Plan.new()
       else
-        id = hash["SearchDicItemResult"]["TitleList"]["DicItemTitle"]["ItemID"]
-        result = Faraday.get $get_url,{
-                                        Dic: use,
-                                        Item: id,
-                                        Loc: "",
-                                        Prof: "XHTML"
-        }
-        data = Hash.from_xml(result.body)
-        if use == "EJdict"
-          @result_text = data["GetDicItemResult"]["Body"]["div"]["div"]
-        else use == "Edict"
-          @result_text = data["GetDicItemResult"]["Body"]["div"]["div"]["div"][0]
+        length = params[:id]
+        if length.to_i == all + 1
+          @plan = Plan.new()
+        else
+          @plan = Plan.find(params[:id])
         end
       end
     end
   end
 
+  def update
+    if res = login_check
+      redirect_to root_path
+    else
+      @plan = Plan.find(params[:id])
+      @plan.user_id = session[:user_id]
+      work = Plan.new(plan_params)
+      if work[:start_at] > work[:end_at]
+        redirect_to plans_edit_path(:id => @plan.id),alert: "時間が不正です。"
+      else
+      @plan.update(plan_params)
+        redirect_to index_path
+      end
+    end
+  end
+  
+  def dictionary
+    if res = login_check
+      redirect_to root_path
+    else
+      if params[:page] != nil
+        use =  params[:page][:category]
+      end
+      key = params[:key_word]
+      if key == nil
+        @result_text = "ここに検索結果が表示されます"
+      else
+        result = Faraday.get $search_url, {
+                                                Dic: use,
+                                                Word: key,
+                                                Scope: "HEADWORD",
+                                                Match: "EXACT",
+                                                Merge: "OR",
+                                                Prof: "XHTML",
+                                                PageSize: 1,
+                                                PageIndex: 0
+        }
+        hash = Hash.from_xml(result.body)
+        if hash["SearchDicItemResult"]["ItemCount"] == "0"
+          @result_text = "該当結果はありません"
+        else
+          id = hash["SearchDicItemResult"]["TitleList"]["DicItemTitle"]["ItemID"]
+          result = Faraday.get $get_url,{
+                                          Dic: use,
+                                          Item: id,
+                                          Loc: "",
+                                          Prof: "XHTML"
+          }
+          data = Hash.from_xml(result.body)
+           if use == "EJdict"
+            @result_text = data["GetDicItemResult"]["Body"]["div"]["div"]
+          else use == "Edict"
+            @result_text = data["GetDicItemResult"]["Body"]["div"]["div"]["div"][0]
+          end
+        end
+      end
+    end
+  end
+  def login_check
+    result = false
+    if session[:user_id] == nil
+      result = true
+    end
+    return result;
+  end
   private
   def plan_params
     params[:plan].permit(:title, :detail, :start_at, :end_at, :color_id, :user_id)

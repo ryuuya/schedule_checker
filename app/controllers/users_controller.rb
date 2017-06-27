@@ -3,13 +3,16 @@ class UsersController < ApplicationController
   rescue_from ActionController::RoutingError, with: :render_404
   rescue_from Exception, with: :render_500
   def index
+    session[:user_id] = nil
   end
 
 #-------newページコントローラー-------
   def new
+    session[:user_id] = nil
     @new = User.new
   end
   def create
+    logout
     @user = User.new(user_params)
     @check = User.find_by login_id: (params[:user][:login_id])
     @params = params[:user]
@@ -47,6 +50,7 @@ class UsersController < ApplicationController
     end
   end
   def login
+    session[:user_id] = nil
     @user = User.new
   end
 
