@@ -63,7 +63,7 @@
         dayClick: function(date,allDay) {
           var time = (moment(date).format('YYYY/MM/DD/hh/mm'));
           localStorage.setItem("start", time);
-          window.location.href = "/show/" + <%= @length %> + "/edit"
+          window.location.href = "/show/" + <%= @length %> + "/new"
         }
       });
       $('#minicalendar').fullCalendar({
