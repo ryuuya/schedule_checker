@@ -30,6 +30,11 @@
       $('#calendar').fullCalendar({
         defaultDate: "<%= @day %>",
         allDaySlot: false,
+        axisFormat: 'H:mm',
+        timeFormat:{ 
+                     agenda: 'H:mm'
+                   },
+	
 
         /* 表示するボタン */
         header: {
@@ -124,7 +129,7 @@
         } 
       });
     });
-     $('#calendar ').click(function(){
+     $('#calendar').click(function(){
       var icon_url = [];
       console.log("wa-");
       <% @weather_icons.each do |icon| %>
