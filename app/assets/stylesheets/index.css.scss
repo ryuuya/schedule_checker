@@ -6,6 +6,7 @@ div {
   display:inline-block;
   width: 200px;
   position: relative;
+  margin-left: 10px;
 }
 
 #calendar {
@@ -38,6 +39,7 @@ div {
   padding: 0 0;
 }
 #minicalendar {
+  border:solid 1px darkgray;
   background-color: #fff;
   max-width: 220px;
   margin: 0 auto;
