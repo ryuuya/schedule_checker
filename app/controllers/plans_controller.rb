@@ -75,6 +75,17 @@ class PlansController < ApplicationController
     redirect_to index_path
   end
 
+  def new
+    @plan = Plan.new()
+  end
+
+  def create
+    @plan = Plan.new(plan_params)
+    id = @plan.user_id
+    @plan.save!
+    redirect_to index_path 
+  end
+
   def edit
     all = Plan.maximum("id")
     if all == nil
