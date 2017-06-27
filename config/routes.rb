@@ -30,6 +30,11 @@ get "show/:id", to: "plans#show", as: "plans_show"
 #showページの削除
 delete "show/:id", to: "plans#destroy", as: "plans_destroy"
 
+#newページルーティング
+get "show/:id/new", to: "plans#new"
+
+post "plans", to: "plans#create"
+
 #editページルーティング
 get "show/:id/edit", to: "plans#edit", as: "plans_edit"
 
