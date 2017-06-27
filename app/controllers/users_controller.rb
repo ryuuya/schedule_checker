@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @check = User.find_by login_id: (params[:user][:login_id])
     if @check != nil
-      redirect_to  users_new_path, action: 'users_login', alert: "※ログインできませんでした。もう一度お確かめください。"
+      redirect_to  users_new_path, action: 'users_login', alert: "※既に存在するIDです。別のIDで登録してください。"
     else
       @user.save
       redirect_to index_path + "?user_id=" + @user.id.to_s

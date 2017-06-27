@@ -110,12 +110,14 @@ td.user {
 td.fixation {
   font-size: 25px;
   font-weight: bold;
+  background-color: #fff;
   border: 1px solid #B8B6B6;
   width: 200px;
   height: 100px;
 }
 #show_submit {
   display: inline-block;
+  margin-top: 30px;
   width: 180px;
   padding: 0.3em 0.3em;
   text-decoration: none;
