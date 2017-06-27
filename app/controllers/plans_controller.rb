@@ -76,13 +76,14 @@ class PlansController < ApplicationController
   end
 
   def new
-    @plan = Plan.new
+    @plan = Plan.new()
   end
 
   def create
     @plan = Plan.new(plan_params)
+    id = @plan.user_id
     @plan.save
-    redirect_to index_path + "?user_id" + id.to_s
+    redirect_to index_path + "?user_id=" + id.to_s
   end
 
   def edit
