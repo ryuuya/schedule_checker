@@ -19,7 +19,7 @@
         </p>
         <p id="create_detail">
           <%= i.label '[詳細]' %><br>
-          <%= i.text_field 'detail' %>
+          <%= i.text_area 'detail', cols:40, :maxlength => 170 %>
         </p>
         <p id="create_color">
           <%= i.label '[色選択]' %><br>
