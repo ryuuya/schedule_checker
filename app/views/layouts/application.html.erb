@@ -4,7 +4,6 @@
 header{
   height:60px;
   border-bottom: solid 1px #000;
-  text-align:right;
 }
 #name{
   display:inline-block;
@@ -12,11 +11,14 @@ header{
 #logout{
   display:inline-block;
 }
-#logo {
+#logo_eria {
   display:inline-block;
+  vertical-align: middle;
 }
 #user_data {
   display:inline-block;
+  vertical-align: middle;
+  margin-left:50px;
 }
 </style>
   <head>
@@ -29,12 +31,14 @@ header{
 
   <body>
     <header>
-        <%= link_to image_tag('cooltext249446792229098.png', :id => "logo"),session["user_id"]?index_path : root_path %>
+      <div id="logo_eria">
+        <%= link_to image_tag('cooltext249446792229098.png'),session["user_id"]?index_path : root_path %>
+      </div>
       <div id="user_data">
         <p id="name"></p>
         <div id="logout">
           <%= form_tag('/logout') do %>
-          <p id="logout_button"><%= submit_tag "ログアウト"%></p>
+            <p id="logout_button"><%= submit_tag "ログアウト"%></p>
           <% end %>
         </div>
       </div>
