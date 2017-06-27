@@ -14,10 +14,39 @@
  *= require_tree .
  *= require_self
  */
-
 body {
  background: #FCF9BE;
+  margin:0;
+  padding:0;
 }
 header{
+  height:60px;
+  border-bottom: solid 1px #BDBDBD;
   background: #FFF;
+  position: relative;
+}
+#name{
+  display:inline-block;
+}
+#logout{
+  display:inline-block;
+}
+#logout_button input{
+  width: 80px;
+  height: 20px;
+  text-align: center;
+}
+#logo_eria {
+  position: absolute;
+  left:0%;
+  display:inline-block;
+  vertical-align: middle;
+}
+#user_data {
+  position: absolute;
+  left: 80%;
+  top: 40%;
+  display:inline-block;
+  vertical-align: middle;
+  margin-left:50px;
 }

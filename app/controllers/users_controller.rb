@@ -12,7 +12,6 @@ class UsersController < ApplicationController
     @new = User.new
   end
   def create
-    logout
     @user = User.new(user_params)
     @check = User.find_by login_id: (params[:user][:login_id])
     @params = params[:user]
@@ -27,7 +26,7 @@ class UsersController < ApplicationController
         elsif @params[:name] == ""
         redirect_to  users_new_path, action: 'users_login', alert: "※名前が入力させていません。"
         elsif @params[:address] == ""
-          redirect_to users_new_path, action: 'users_login', alert: "※住所が入力されていませ。"
+          redirect_to users_new_path, action: 'users_login', alert: "※住所が入力されていません。"
         elsif @params[:password] == ""
           redirect_to users_new_path, action: 'users_login', alert: "※パスワードが入力させていません。"
         else
