@@ -3,19 +3,22 @@
   </head>
   <body>
     <div id="top_all">
-      <h2><marquee scrollamount="15">Ladies & Gentleman!! Boys&Girls!! Let's Enjoy! Play, Work, and Your Life!!</marquee></h2>
+      <h2><marquee scrollamount="15">社会人のみんな！スケジュール管理、出来てますか？</marquee></h2>
       <div id="top_title">
         <h1>WELCOME</h1>
         <h1>TO</h1>
         <h1 id="main_schedule_checker">SCHEDULE CHECKER</h1>
       </div>
-      <div id="new_button">
-        <h5 id="new_comment">初めてご利用の方</h5>
-        <%= button_to "新規登録", users_new_path, :method => "get", :id => "button_new" %>
-      </div>
-      <div id="login_button">
-        <h5 id="login_comment">ログインIDをお持ちの方</h5>
-        <%= button_to "ログイン", users_login_path,  :id => "button_login", :method => "get" %>
+      <p id="expo_comment">スケジュールチェッカーは、スケジュール管理用のアプリケーションです。<br>早速ログインして、予定を書き込みましょう！</p>
+      <div id="button_eria">
+        <div id="new_button">
+          <h5 id="new_comment">初めてご利用の方</h5>
+          <%= button_to "新規登録", users_new_path, :method => "get", :id => "button_new" %>
+        </div>
+        <div id="login_button">
+          <h5 id="login_comment">ログインIDをお持ちの方</h5>
+          <%= button_to "ログイン", users_login_path,  :id => "button_login", :method => "get" %>
+        </div>
       </div>
     </div>
   </body>

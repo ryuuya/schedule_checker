@@ -3,13 +3,9 @@
   </head>
   <body>
     <div id="edit_main">
-      <h1 id="main_title">スケジュール登録・編集・削除</h1>
+      <h1 id="main_title">スケジュール編集</h1>
 
       <%= form_for @plan, :url => plans_update_path, :html => {:method => "put"} do |i| %>
-        <p id="edit_user_id">
-          <%= i.label "User_Id" %><br>
-          <%= i.text_field "user_id", :readonly => true %>
-        </p>
         <p id="edit_title">
           <%= i.label '[予定]' %><br>
           <%= i.text_field 'title' %>

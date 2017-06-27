@@ -1,0 +1,29 @@
+/*全体を中央揃え*/
+#new_all {
+  text-align: center;
+}
+
+/*開始時間の配置*/
+#create_start {
+  display: inline-block;
+  margin: 10px;
+}
+
+/*終了時間の配置*/
+#create_end {
+  display: inline-block;
+  margin-left: 50px;
+}
+
+/*色選択の配置*/
+#create_color {
+  display: inline-block;
+  margin-right: 300px;
+  margin-top: 10px;
+}
+
+/*登録ボタンの配置*/
+#create_save {
+  display: inline-block;
+  margin-left: 300px;
+}

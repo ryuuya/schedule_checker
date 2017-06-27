@@ -1,0 +1,35 @@
+<html>
+  <head>
+  </head>   
+  <body>
+    <div id="new_all">
+      <h1>スケジュール登録</h1>
+      <%= form_for @plan do |i| %>
+        <p id="create_title">
+          <%= i.label '[予定]' %><br>
+          <%= i.text_field 'title' %>
+        </p>
+        <p id="create_start">
+          <%= i.label '[開始時間]' %><br>
+          <%= i.datetime_select 'start_at' %>
+        </p>
+        <p id="create_end">
+          <%= i.label '[終了時間]' %><br>
+          <%= i.datetime_select 'end_at' %>
+        </p>
+        <p id="create_detail">
+          <%= i.label '[詳細]' %><br>
+          <%= i.text_field 'detail' %>
+        </p>
+        <p id="create_color">
+          <%= i.label '[色選択]' %><br>
+          <%= i.collection_select 'color_id', Color.all, :id, :color_name, :include_blank => true %>
+        </p>
+        <p id="create_save">
+          <%= i.submit '登録', :id => "save_button" %>
+        </p>
+      <% end %>
+      <%= link_to "戻る", index_path %>
+    </div>
+  </body>
+</html>
