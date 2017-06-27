@@ -4,11 +4,15 @@
   <body>
     <div class= "edit">
       <h1>ユーザー情報編集</h1>
+      <% if flash[:alert] %>
+        <div class="alert_denger">
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
       <p class="caution_red">※すべて記入してください。</p>
       <%= form_for @user, :url => { :action => "update" }, :html => { :method => :put } do |f| %>
         <h2>ログインID</h2>
-        <p><%= f.text_field :login_id, :maxlength => 16%></p>
-        <p class="caution"> ※16文字まで<p>
+        <p><%= @user.login_id %></p>
         <h2>名前</h2>
         <p><%= f.text_field :name %></p>
         <h2>住所</h2>
