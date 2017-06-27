@@ -72,7 +72,7 @@ class PlansController < ApplicationController
     @plan = Plan.find(params[:id])
     id = @plan.user_id
     @plan.destroy
-    redirect_to index_path + "?user_id=" + id.to_s
+    redirect_to index_path
   end
 
   def new
@@ -116,7 +116,7 @@ class PlansController < ApplicationController
       id = @plan.user_id
       @plan.update(plan_params)
     end
-    redirect_to index_path + "?user_id=" + id.to_s
+    redirect_to index_path
   end
   
   def dictionary
