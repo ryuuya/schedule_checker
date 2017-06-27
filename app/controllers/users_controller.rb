@@ -10,12 +10,27 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @check = User.find_by login_id: (params[:user][:login_id])
-    if @check != nil
-      redirect_to  users_new_path, action: 'users_login', alert: "※既に存在するIDです。別のIDで登録してください。"
+    @params = params[:user]
+    if @params[:login_id].match(/^[ぁ-んァ-ン一-龥]/)
+      redirect_to users_new_path, action: 'users_login', alert: "※IDは全角文字は使用できません。"
     else
-      @user.save
-      session[:user_id] = @user.id
-      redirect_to index_path
+      if @check != nil
+        redirect_to  users_new_path, action: 'users_login', alert: "※既に存在するIDです。別のIDで登録してください。"
+      else
+        if params[:user][:login_id] == ""
+          redirect_to  users_new_path, action: 'users_login', alert: "※IDが入力させていません。"
+        elsif params[:user][:name] == ""
+        redirect_to  users_new_path, action: 'users_login', alert: "※名前が入力させていません。"
+        elsif params[:user][:address] == ""
+          redirect_to users_new_path, action: 'users_login', alert: "※住所が入力されていませ。"
+        elsif params[:user][:password] == ""
+          redirect_to users_new_path, action: 'users_login', alert: "※パスワードが入力させていません。"
+        else
+          @user.save
+          session[:user_id] = @user.id
+          redirect_to index_path
+        end
+      end
     end
   end
   def check
