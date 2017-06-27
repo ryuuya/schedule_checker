@@ -31,7 +31,7 @@ get "show/:id", to: "plans#show", as: "plans_show"
 delete "show/:id", to: "plans#destroy", as: "plans_destroy"
 
 #newページルーティング
-get "show/:id/new", to: "plans#new"
+get "show/:id/new", to: "plans#new", as: "plans_new"
 
 post "plans", to: "plans#create"
 

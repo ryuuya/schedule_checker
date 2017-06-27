@@ -60,8 +60,10 @@
         titleFormat: 'YYYY年MM月DD日',
     
         /* 日付クリック時の処理  */
-        dayClick: function(date) {
-        window.location.href = "/show/" + <%= @length %> + "/edit"
+        dayClick: function(date,allDay) {
+          var time = (moment(date).format('YYYY/MM/DD/hh/mm'));
+          localStorage.setItem("start", time);
+          window.location.href = "/show/" + <%= @length %> + "/new"
         }
       });
       $('#minicalendar').fullCalendar({

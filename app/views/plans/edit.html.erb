@@ -26,6 +26,11 @@
           <%= i.label '[色選択]' %><br>
           <%= i.collection_select 'color_id', Color.all, :id, :color_name, :include_blank => true %>
         </p>
+        <% if flash[:alert] %>
+            <div class="alert_denger">
+            <%= flash[:alert] %>
+            </div>
+        <% end %>
         <p id="edit_save">
           <%= i.submit '登録', :id => "save_button" %>
         </p>
@@ -35,9 +40,4 @@
       <p id="back"><%= link_to '戻る', index_path %></p>
     </div>
   </body>
-  <script>
-    var id = document.getElementById("plan_user_id");
-    var user_id = localStorage.getItem("user_id");
-    id.value = user_id;
-  </script>
 </html>
