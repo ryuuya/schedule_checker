@@ -12,6 +12,12 @@ header{
 #logout{
   display:inline-block;
 }
+#logo {
+  display:inline-block;
+}
+#user_data {
+  display:inline-block;
+}
 </style>
   <head>
     <title>ScheduleChecker</title>
@@ -23,6 +29,7 @@ header{
 
   <body>
     <header>
+        <%= link_to image_tag('cooltext249446792229098.png', :id => "logo"),session["user_id"]?index_path : root_path %>
       <div id="user_data">
         <p id="name"></p>
         <div id="logout">
