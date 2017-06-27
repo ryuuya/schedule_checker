@@ -70,9 +70,9 @@ class PlansController < ApplicationController
 
   def destroy
     @plan = Plan.find(params[:id])
-    id = @plan.user_id
+    @plan.user_id = session[:user_id]
     @plan.destroy
-    redirect_to index_path
+    redirect_to index_path 
   end
 
   def new
@@ -82,8 +82,12 @@ class PlansController < ApplicationController
   def create
     @plan = Plan.new(plan_params)
     @plan.user_id = session[:user_id]
-    @plan.save!
-    redirect_to index_path 
+    if @plan.start_at > @plan.end_at
+      redirect_to plans_new_path(:id => Plan.maximum("id") + 1),alert: "時間が不正です。"
+    else
+      @plan.save!
+      redirect_to index_path 
+    end
   end
 
   def edit
@@ -102,21 +106,15 @@ class PlansController < ApplicationController
   end
 
   def update
-    all = Plan.maximum("id")
-    length = params[:id] 
-    if all == nil
-      all = 0
-    end
-    if length.to_i == all + 1
-      @plan = Plan.new(plan_params)
-      @plan.user_id = session[:user_id]
-      @plan.save!
+    @plan = Plan.find(params[:id])
+    @plan.user_id = session[:user_id]
+    work = Plan.new(plan_params)
+    if work[:start_at] > work[:end_at]
+      redirect_to plans_edit_path(:id => @plan.id),alert: "時間が不正です。"
     else
-      @plan = Plan.find(params[:id])
-      @plan.user_id = session[:user_id]
-      @plan.update(plan_params)
-    end
+    @plan.update(plan_params)
     redirect_to index_path
+    end
   end
   
   def dictionary
