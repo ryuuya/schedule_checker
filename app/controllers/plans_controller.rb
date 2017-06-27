@@ -81,7 +81,7 @@ class PlansController < ApplicationController
 
   def create
     @plan = Plan.new(plan_params)
-    id = @plan.user_id
+    @plan.user_id = session[:user_id]
     @plan.save!
     redirect_to index_path 
   end
@@ -109,11 +109,11 @@ class PlansController < ApplicationController
     end
     if length.to_i == all + 1
       @plan = Plan.new(plan_params)
-      id = @plan.user_id
+      @plan.user_id = session[:user_id]
       @plan.save!
     else
       @plan = Plan.find(params[:id])
-      id = @plan.user_id
+      @plan.user_id = session[:user_id]
       @plan.update(plan_params)
     end
     redirect_to index_path

@@ -39,5 +39,46 @@
     var id = document.getElementById("plan_user_id");
     var user_id = localStorage.getItem("user_id");
     id.value = user_id;
+    var time = localStorage.getItem("start");
+    
+    /* カレンダーからeditに遷移した場合の初期設定 */
+    if(time != null){
+      var times = time.split("/");
+
+      /* 年設定  */
+      var start_years = document.getElementById("plan_start_at_1i").getElementsByTagName('option');
+      var end_years = document.getElementById("plan_end_at_1i").getElementsByTagName('option');
+      for(var i = 0;i < years.length;i++){
+        if(start_years[i].value == times[0]){
+          start_years[i].selected = true;
+          end_years[i].selected = true;
+        }
+      }
+
+      /* 月設定  */
+      if(times[1][0] == 0){
+        times[1] = times[1][1];
+      }
+      var start_month = document.getElementById("plan_start_at_2i").getElementsByTagName('option');
+      var end_month = document.getElementById("plan_end_at_2i").getElementsByTagName('option');
+      for(var i = 0;i < years.length;i++){
+        if(start_month[i].value == times[1]){
+          start_month[i].selected = true;
+          end_month[i].selected = true;
+        }
+      }
+      /* 日設定  */
+      if(times[2][0] == 0){
+        times[2] = times[2][1];
+      }
+      var start_days = document.getElementById("plan_start_at_3i").getElementsByTagName('option');
+      var end_dats = document.getElementById("plan_end_at_3i").getElementsByTagName('option');
+      for(var i = 0;i < years.length;i++){
+        if(start_month[i].value == times[2]){
+          start_month[i].selected = true;
+          end_month[i].selected = true;
+        }
+      }
+    }
   </script>
 </html>
