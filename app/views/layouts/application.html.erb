@@ -36,8 +36,12 @@ header{
   </body>
   <script>
     id = "<%= session[:user_id] %>";
+    user_id = localStorage.getItem("user_id");
+    user_name = localStorage.getItem("user_name");
+    console.log(user_name)
     if (id != ""){
       link = document.getElementById("name");
+      link.innerHTML = "<a href='users/show/"  + user_id  + "'>"+ user_name  + "</a>";
     }else{
       document.getElementById("user_data").style.display="none"
     }
