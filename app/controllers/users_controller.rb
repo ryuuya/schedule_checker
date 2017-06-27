@@ -5,6 +5,8 @@ class UsersController < ApplicationController
   def index
     session[:user_id] = nil
   end
+
+#-------newページコントローラー-------
   def new
     session[:user_id] = nil
     @new = User.new
@@ -20,13 +22,13 @@ class UsersController < ApplicationController
       if @check != nil
         redirect_to  users_new_path, action: 'users_login', alert: "※既に存在するIDです。別のIDで登録してください。"
       else
-        if params[:user][:login_id] == ""
+        if @params[:login_id] == ""
           redirect_to  users_new_path, action: 'users_login', alert: "※IDが入力させていません。"
-        elsif params[:user][:name] == ""
+        elsif @params[:name] == ""
         redirect_to  users_new_path, action: 'users_login', alert: "※名前が入力させていません。"
-        elsif params[:user][:address] == ""
+        elsif @params[:address] == ""
           redirect_to users_new_path, action: 'users_login', alert: "※住所が入力されていませ。"
-        elsif params[:user][:password] == ""
+        elsif @params[:password] == ""
           redirect_to users_new_path, action: 'users_login', alert: "※パスワードが入力させていません。"
         else
           @user.save
@@ -36,6 +38,8 @@ class UsersController < ApplicationController
       end
     end
   end
+
+#--------loginページコントローラー--------------
   def check
     @user = User.find_by login_id: (params[:user][:login_id])
     if @user && @user.authenticate(params[:user][:password_digest])
@@ -49,22 +53,39 @@ class UsersController < ApplicationController
     session[:user_id] = nil
     @user = User.new
   end
+
+#--------logoutコントローラー-------------
   def logout
     session[:user_id] = nil
     redirect_to root_path
   end
+
+#--------user_showページコントローラー----
   def show
     id = params[:id]
     @user = User.find(id)
   end
+
+#--------user_editページコントローラー---------
   def edit
     @user = User.find(params[:id])
   end
   def update
     @user = User.find(params[:id])
-    @user.update_attributes(user_params)
-    redirect_to user_path 
+    p user_params
+    if user_params[:name] == ""
+      redirect_to  user_edit_path, action: 'users_edit', alert: "※名前が入力させていません。"
+    elsif user_params[:address] == ""
+      redirect_to user_edit_path, action: 'users_edit', alert: "※住所が入力されていませ。"
+    elsif user_params[:password] == ""
+      redirect_to user_edit_path, action: 'users_edit', alert: "※パスワードが入力させていません。"
+    else
+      @user.update_attributes(user_params)
+      redirect_to user_path
+    end
   end
+
+#-------errorページコントローラー---------
   def render_404
     render template: '/errors/error_404.html', status: 404, layout: 'application', content_type: 'text/html'
   end
