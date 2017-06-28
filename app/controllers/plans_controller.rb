@@ -25,6 +25,8 @@ class PlansController < ApplicationController
           @weather_icons.push(weather["icon"])
         end
       end
+
+      #plansのデータ数を取得して
       if Plan.exists?
         @length =  Plan.maximum("id") + 1
         if Plan.exists?(:user_id => @user_id)
