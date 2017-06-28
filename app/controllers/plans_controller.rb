@@ -137,11 +137,15 @@ class PlansController < ApplicationController
       @plan = Plan.find(params[:id])
       @plan.user_id = session[:user_id]
       work = Plan.new(plan_params)
-      if work[:start_at] > work[:end_at]
-        redirect_to plans_edit_path(:id => @plan.id),alert: "時間が不正です。"
+      if plan_params[:title] == ""
+        redirect_to  plans_edit_path, alert: "予定が未入力です"
       else
-      @plan.update(plan_params)
-        redirect_to index_path
+        if work[:start_at] > work[:end_at]
+          redirect_to plans_edit_path(:id => @plan.id),alert: "時間が不正です。"
+        else
+          @plan.update(plan_params)
+          redirect_to index_path
+        end
       end
     end
   end
