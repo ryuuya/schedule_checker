@@ -11,10 +11,9 @@ class PlansController < ApplicationController
       @weather_icons = []
       user = User.find(session[:user_id])
       @user_id = session[:user_id]
-      if user.plans.exists? == true
+      @plans = []
+      if user.plans.count > 0
         @plans = user.plans
-      else
-        @plans = []
       end
       @user_name = User.find(@user_id).name
       address = user.address
