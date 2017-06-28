@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_404
   rescue_from ActionController::RoutingError, with: :render_404
   rescue_from Exception, with: :render_500
+
+#-------topページコントローラー-------
   def index
     session[:user_id] = nil
   end
@@ -12,6 +14,7 @@ class UsersController < ApplicationController
     @new = User.new
   end
 
+#登録を実行
   def create
     @user = User.new(user_params)
     @check = User.find_by login_id: (params[:user][:login_id])
@@ -78,6 +81,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+#編集を実行
   def update
     @user = User.find(params[:id])
     if user_params[:name] == ""
