@@ -69,6 +69,7 @@ class PlansController < ApplicationController
       end
     end
   end
+
   def show
     if res = login_check
       redirect_to root_path
@@ -201,6 +202,7 @@ class PlansController < ApplicationController
     end
     return result;
   end
+
   private
   def plan_params
     params[:plan].permit(:title, :detail, :start_at, :end_at, :color_id, :user_id)
