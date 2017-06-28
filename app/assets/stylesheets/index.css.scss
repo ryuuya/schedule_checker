@@ -6,26 +6,41 @@ div {
   display:inline-block;
   width: 200px;
   position: relative;
+  margin-left: 10px;
 }
 
 #calendar {
+  background-color: #fff;
   display:inline-block;
   width: 900px;
   margin-left: 30px;
+  border:solid 1px darkgray;
 }
 
 #calendar th {
+  position:relative;
   text-align:center;
-  margin: 0 0 0 0;
-  padding: 0 0 0 0;
-  
 }
+
+#calendar th span{
+  position:absolute;
+  top: 30%;
+  left: 10%;
+}
+#calendar th img{
+  position:absolute;
+  top: 0%;
+  left: 65%
+}
+
 #calendar .fc-day-header{
   height: 2em ;
   margin: 0 0;
   padding: 0 0;
 }
 #minicalendar {
+  border:solid 1px darkgray;
+  background-color: #fff;
   max-width: 220px;
   margin: 0 auto;
   position: absolute;

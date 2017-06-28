@@ -3,10 +3,12 @@ class UsersController < ApplicationController
   rescue_from ActionController::RoutingError, with: :render_404
   rescue_from Exception, with: :render_500
   def index
+    session[:user_id] = nil
   end
 
 #-------newページコントローラー-------
   def new
+    session[:user_id] = nil
     @new = User.new
   end
   def create
@@ -24,7 +26,7 @@ class UsersController < ApplicationController
         elsif @params[:name] == ""
         redirect_to  users_new_path, action: 'users_login', alert: "※名前が入力させていません。"
         elsif @params[:address] == ""
-          redirect_to users_new_path, action: 'users_login', alert: "※住所が入力されていませ。"
+          redirect_to users_new_path, action: 'users_login', alert: "※住所が入力されていません。"
         elsif @params[:password] == ""
           redirect_to users_new_path, action: 'users_login', alert: "※パスワードが入力させていません。"
         else
@@ -47,6 +49,7 @@ class UsersController < ApplicationController
     end
   end
   def login
+    session[:user_id] = nil
     @user = User.new
   end
 
@@ -58,12 +61,18 @@ class UsersController < ApplicationController
 
 #--------user_showページコントローラー----
   def show
+    if session[:user_id] == nil
+      redirect_to root_path
+    end
     id = params[:id]
     @user = User.find(id)
   end
 
 #--------user_editページコントローラー---------
   def edit
+    if session[:user_id] == nil
+      redirect_to root_path
+    end
     @user = User.find(params[:id])
   end
   def update
