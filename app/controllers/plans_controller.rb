@@ -98,10 +98,11 @@ class PlansController < ApplicationController
     if res = login_check
       redirect_to root_path
     else
-    login_check
       @plan = Plan.new(plan_params)
       @plan.user_id = session[:user_id]
-      if @plan.start_at > @plan.end_at
+      if @plan.title == ""
+        redirect_to plans_new_path(:id => Plan.maximum("id") + 1),alert: "予定が未入力です。"
+      elsif @plan.start_at > @plan.end_at
         redirect_to plans_new_path(:id => Plan.maximum("id") + 1),alert: "時間が不正です。"
       else
         @plan.save!
