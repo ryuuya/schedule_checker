@@ -1,8 +1,9 @@
 class PlansController < ApplicationController
   require 'xmlsimple'
-  $tenki_url = "http://api.openweathermap.org/data/2.5/forecast"
-  $search_url = "http://public.dejizo.jp/NetDicV09.asmx/SearchDicItemLite"
-  $get_url = "http://public.dejizo.jp/NetDicV09.asmx/GetDicItemLite"
+  tenki_url = "http://api.openweathermap.org/data/2.5/forecast"
+  search_url = "http://public.dejizo.jp/NetDicV09.asmx/SearchDicItemLite"
+  get_url = "http://public.dejizo.jp/NetDicV09.asmx/GetDicItemLite"
+
   def index
     if res = login_check
       redirect_to root_path
@@ -36,7 +37,6 @@ class PlansController < ApplicationController
         @plans =[]
       end
       today = Time.now
-      p Plan.exists?
 
       #カレンダーセット用データ
       @datas = []
@@ -66,6 +66,7 @@ class PlansController < ApplicationController
       end
     end
   end
+
   def show
     if res = login_check
       redirect_to root_path
@@ -198,6 +199,7 @@ class PlansController < ApplicationController
     end
     return result;
   end
+
   private
   def plan_params
     params[:plan].permit(:title, :detail, :start_at, :end_at, :color_id, :user_id)

@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     session[:user_id] = nil
     @new = User.new
   end
+
   def create
     @user = User.new(user_params)
     @check = User.find_by login_id: (params[:user][:login_id])
@@ -48,6 +49,7 @@ class UsersController < ApplicationController
         redirect_to users_login_path, action: 'users_login', alert: "※ログインできませんでした。もう一度お確かめください。"
     end
   end
+
   def login
     session[:user_id] = nil
     @user = User.new
@@ -75,9 +77,9 @@ class UsersController < ApplicationController
     end
     @user = User.find(params[:id])
   end
+
   def update
     @user = User.find(params[:id])
-    p user_params
     if user_params[:name] == ""
       redirect_to  user_edit_path, action: 'users_edit', alert: "※名前が入力させていません。"
     elsif user_params[:address] == ""
@@ -94,9 +96,11 @@ class UsersController < ApplicationController
   def render_404
     render template: '/errors/error_404.html', status: 404, layout: 'application', content_type: 'text/html'
   end
+
   def render_500
     render template: '/errors/error_500.html', status: 500, layout: 'application', content_type: 'text/html'
   end
+
   private
    def user_params
      params[:user].permit(:login_id, :name, :password, :password_confirmation, :address)
