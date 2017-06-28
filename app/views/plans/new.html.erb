@@ -23,7 +23,7 @@
         </p>
         <p id="create_color">
           <%= i.label '[色選択]' %><br>
-          <%= i.collection_select 'color_id', Color.all, :id, :color_name, :include_blank => true %>
+          <%= i.collection_select 'color_id', Color.all, :id, :color_name %>
         </p>
          <% if flash[:alert] %>
             <div class="alert_denger">

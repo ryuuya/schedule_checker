@@ -61,12 +61,18 @@ class UsersController < ApplicationController
 
 #--------user_showページコントローラー----
   def show
+    if session[:user_id] == nil
+      redirect_to root_path
+    end
     id = params[:id]
     @user = User.find(id)
   end
 
 #--------user_editページコントローラー---------
   def edit
+    if session[:user_id] == nil
+      redirect_to root_path
+    end
     @user = User.find(params[:id])
   end
   def update
