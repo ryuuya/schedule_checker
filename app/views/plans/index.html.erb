@@ -16,7 +16,6 @@
     <script>
     /* 予定の取得  */
     window.datas = <%= raw @datas.to_json %>
-    console.log(window.datas)
     </script>
     <div id="calendar"></div>
 
@@ -63,7 +62,6 @@
         /* 日付クリック時の処理  */
         dayClick: function(date,allDay) {
           var time = (moment(date).format('YYYY/MM/DD/HH/mm'));
-          console.log(time)
           localStorage.setItem("start", time);
           window.location.href = "/show/" + <%= @length %> + "/new" 
         }
@@ -125,7 +123,6 @@
     /* カレンダー表記変更時に天気が消えない処理  */
     $('#calendar').click(function(){
       var icon_url = [];
-      console.log("wa-");
       <% @weather_icons.each do |icon| %>
         icon_url.push("<%= icon %>");
       <% end %>
@@ -138,7 +135,6 @@
         } 
         var month = days.getMonth()+1;
         var now_days = month + "/" + day;
-        console.log("test")
         var str = ($(this).text().substring(2,6));
         if(now_days == str || count > 0 ){
           if(count < 5){
