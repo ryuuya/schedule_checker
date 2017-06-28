@@ -4,6 +4,7 @@ class PlansController < ApplicationController
   search_url = "http://public.dejizo.jp/NetDicV09.asmx/SearchDicItemLite"
   get_url = "http://public.dejizo.jp/NetDicV09.asmx/GetDicItemLite"
 
+#カレンダーページ
   def index
     if res = login_check
       redirect_to root_path
@@ -67,6 +68,7 @@ class PlansController < ApplicationController
     end
   end
 
+#予定の詳細ページ
   def show
     if res = login_check
       redirect_to root_path
@@ -75,6 +77,7 @@ class PlansController < ApplicationController
     end
   end
 
+#予定を削除
   def destroy
     if res = login_check
       redirect_to root_path
@@ -86,6 +89,7 @@ class PlansController < ApplicationController
     end
   end
 
+#予定の登録ページ
   def new
     if res = login_check
       redirect_to root_path
@@ -94,6 +98,7 @@ class PlansController < ApplicationController
     end
   end
 
+#登録を実行
   def create
     if res = login_check
       redirect_to root_path
@@ -111,6 +116,7 @@ class PlansController < ApplicationController
     end
   end
 
+#予定の編集ページ
   def edit
     if res = login_check
       redirect_to root_path
@@ -130,6 +136,7 @@ class PlansController < ApplicationController
     end
   end
 
+#編集を実行
   def update
     if res = login_check
       redirect_to root_path
@@ -149,7 +156,8 @@ class PlansController < ApplicationController
       end
     end
   end
-  
+
+#辞書ページ
   def dictionary
     if res = login_check
       redirect_to root_path
@@ -192,6 +200,8 @@ class PlansController < ApplicationController
       end
     end
   end
+
+#ログイン状況の確認
   def login_check
     result = false
     if session[:user_id] == nil
