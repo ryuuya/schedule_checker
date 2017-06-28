@@ -13,22 +13,22 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
-    @check = User.find_by login_id: (params[:user][:login_id])
-    @params = params[:user]
-    if @params[:login_id].match(/^[ぁ-んァ-ン一-龥]/)
+    user = User.new(user_params)
+    check = User.find_by login_id: (params[:user][:login_id])
+    params = params[:user]
+    if params[:login_id].match(/^[ぁ-んァ-ン一-龥]/)
       redirect_to users_new_path, action: 'users_login', alert: "※IDは全角文字は使用できません。"
     else
-      if @check != nil
+      if check != nil
         redirect_to  users_new_path, action: 'users_login', alert: "※既に存在するIDです。別のIDで登録してください。"
       else
-        if @params[:login_id] == ""
+        if params[:login_id] == ""
           redirect_to  users_new_path, action: 'users_login', alert: "※IDが入力させていません。"
-        elsif @params[:name] == ""
+        elsif params[:name] == ""
         redirect_to  users_new_path, action: 'users_login', alert: "※名前が入力させていません。"
-        elsif @params[:address] == ""
+        elsif params[:address] == ""
           redirect_to users_new_path, action: 'users_login', alert: "※住所が入力されていません。"
-        elsif @params[:password] == ""
+        elsif params[:password] == ""
           redirect_to users_new_path, action: 'users_login', alert: "※パスワードが入力させていません。"
         else
           @user.save
