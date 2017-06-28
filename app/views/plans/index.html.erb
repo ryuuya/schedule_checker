@@ -62,9 +62,10 @@
     
         /* 日付クリック時の処理  */
         dayClick: function(date,allDay) {
-          var time = (moment(date).format('YYYY/MM/DD/hh/mm'));
+          var time = (moment(date).format('YYYY/MM/DD/HH/mm'));
+          console.log(time)
           localStorage.setItem("start", time);
-          window.location.href = "/show/" + <%= @length %> + "/new"
+          window.location.href = "/show/" + <%= @length %> + "/new" 
         }
       });
       $('#minicalendar').fullCalendar({
@@ -73,10 +74,6 @@
           center: 'prev,next title',
           right: ''
         },
-
-        /* 表示するボタン */
-
-        /*　ボタンの名前変更　*/
 
         /* 初期表示  */
         defaultView:'month',
@@ -91,8 +88,6 @@
         contentHeight: 200,
         aspectRaito: 5.20,
         titleFormat: "YYYY年M月",
-
-        /* 予定反映  */
     
         /* 日付クリック時の処理  */
         dayClick: function(date) {
@@ -101,6 +96,7 @@
         }
       });
     });
+
     /*指定した日付に天気をセット*/
     $(function() {
       var icon_url = [];
@@ -125,7 +121,9 @@
         } 
       });
     });
-     $('#calendar').click(function(){
+    
+    /* カレンダー表記変更時に天気が消えない処理  */
+    $('#calendar').click(function(){
       var icon_url = [];
       console.log("wa-");
       <% @weather_icons.each do |icon| %>
