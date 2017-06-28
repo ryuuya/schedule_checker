@@ -1,8 +1,9 @@
 class PlansController < ApplicationController
   require 'xmlsimple'
-  $tenki_url = "http://api.openweathermap.org/data/2.5/forecast"
-  $search_url = "http://public.dejizo.jp/NetDicV09.asmx/SearchDicItemLite"
-  $get_url = "http://public.dejizo.jp/NetDicV09.asmx/GetDicItemLite"
+  tenki_url = "http://api.openweathermap.org/data/2.5/forecast"
+  search_url = "http://public.dejizo.jp/NetDicV09.asmx/SearchDicItemLite"
+  get_url = "http://public.dejizo.jp/NetDicV09.asmx/GetDicItemLite"
+
   def index
     if res = login_check
       redirect_to root_path
