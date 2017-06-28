@@ -21,15 +21,15 @@
           <%= i.label '[詳細]' %><br>
           <%= i.text_area 'detail', cols:40, :maxlength => 170 %>
         </p>
+        <% if flash[:alert] %>
+            <div class="alert_denger" id= "new_error">
+            <%= flash[:alert] %>
+            </div>
+         <% end %>
         <p id="create_color">
           <%= i.label '[色選択]' %><br>
           <%= i.collection_select 'color_id', Color.all, :id, :color_name %>
         </p>
-         <% if flash[:alert] %>
-            <div class="alert_denger">
-            <%= flash[:alert] %>
-            </div>
-         <% end %>
         <p id="create_save">
           <%= i.submit '登録', :id => "save_button" %>
         </p>

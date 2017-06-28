@@ -21,6 +21,8 @@
   margin: 0 auto;
   width: 400px;
   border: solid 1px #000;
+  background-color: #fff;
+  border-radius: 5px;
 }
 
 /*開始時間のcss*/
@@ -57,6 +59,8 @@
   border: solid 1px #000;
   width: 700px;
   height: 100px;
+  background-color: #fff;
+  border-radius: 5px;
 }
 
 /*ボタンの編集*/
@@ -64,9 +68,38 @@
   display: inline-block;
   margin: 50px;
 }
+
 #delete_button {
+  display: inline-block;
+  width: 150px;
+  padding: 0.3em 0.3em;
+  text-decoration: none;
+  color: #000;
+  font-size: 20px;
+  border: solid 2px #67c5ff;
   border-radius: 5px;
+  transition: .4s;
+  background: #fff;
 }
+
+#delete_button:hover {
+  background: #67c5ff;
+  color: white;
+}
+
 #edit_button {
+  display: inline-block;
+  width: 150px;
+  padding: 0.3em 0.3em;
+  text-decoration: none;
+  color: #000;
+  font-size: 20px;
+  border: solid 2px #67c5ff;
   border-radius: 5px;
+  transition: .4s;
+  background: #fff;
+}
+#edit_button:hover {
+  background: #67c5ff;
+  color: white;
 }
