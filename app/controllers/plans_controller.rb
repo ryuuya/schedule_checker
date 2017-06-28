@@ -12,7 +12,6 @@ class PlansController < ApplicationController
       user = User.find(session[:user_id])
       @user_id = session[:user_id]
       if user.plans.exists? == true
-        p Plan.order('start_at')
         @plans = user.plans
       else
         @plans = []
@@ -39,7 +38,6 @@ class PlansController < ApplicationController
         @plans =[]
       end
       today = Time.now
-      p Plan.exists?
 
       #カレンダーセット用データ
       @datas = []

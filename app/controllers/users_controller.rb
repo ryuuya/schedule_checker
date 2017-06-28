@@ -77,7 +77,6 @@ class UsersController < ApplicationController
   end
   def update
     @user = User.find(params[:id])
-    p user_params
     if user_params[:name] == ""
       redirect_to  user_edit_path, action: 'users_edit', alert: "※名前が入力させていません。"
     elsif user_params[:address] == ""
