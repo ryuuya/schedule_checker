@@ -24,20 +24,12 @@ class PlansController < ApplicationController
           @weather_icons.push(weather["icon"])
         end
       end
+      @lenght = 1
 
-      #plansのデータ数を取得して
+      #plansのデータで一番大きいID + 1を取得
       if Plan.exists?
         @length =  Plan.maximum("id") + 1
-        if Plan.exists?(:user_id => @user_id)
-          @plans = Plan.where(user_id: @user_id.to_i)
-        else 
-          Plan.exists?(:user_id => @user_id)
-          @plans =[]
-        end
-      else
-        @length = 1  
-        @plans =[]
-      end
+      end 
       today = Time.now
 
       #カレンダーセット用データ
@@ -59,6 +51,8 @@ class PlansController < ApplicationController
           @today_plans.push(array)
         end
       end
+
+      #初期表示の日付設定、
       if params[:day] == nil
       @day = today.strftime("%Y-%m-%d")
         @disp = "agendaWeek"
@@ -139,6 +133,8 @@ class PlansController < ApplicationController
       @plan = Plan.find(params[:id])
       @plan.user_id = session[:user_id]
       work = Plan.new(plan_params)
+
+      #未入力check
       if plan_params[:title] == ""
         redirect_to  plans_edit_path, alert: "予定が未入力です"
       else
@@ -194,6 +190,7 @@ class PlansController < ApplicationController
       end
     end
   end
+
   def login_check
     result = false
     if session[:user_id] == nil
@@ -203,6 +200,7 @@ class PlansController < ApplicationController
   end
 
   private
+
   def plan_params
     params[:plan].permit(:title, :detail, :start_at, :end_at, :color_id, :user_id)
   end
