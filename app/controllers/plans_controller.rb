@@ -16,6 +16,26 @@ class PlansController < ApplicationController
       end
       @user_name = User.find(@user_id).name
       address = user.address
+      
+      #api例外処理
+      if address == "北海道"
+        address = "hokkaido"
+      elsif address == "神奈川県"
+        address = "kanagawa"
+      elsif address == "埼玉県"
+        address = "saitame"
+      elsif address == "山梨県"
+        address = "yamanashi"
+      elsif address == "愛知県"
+        address = "aichi"
+      elsif address == "滋賀県"
+        address = "shiga"
+      elsif address == "香川県"
+        address = "kagawa"
+      elsif address == "愛媛県"
+        address = "ehime"
+      end
+      
       res = Faraday.get tenki_url, {q: address, APPID: "c82b64efba2a36c7dc188c410a386457",cnt: 5}
       tenkis = JSON.parse(res.body)
       tenkis["list"].each do |tenki|
