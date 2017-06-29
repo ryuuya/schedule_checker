@@ -13,7 +13,6 @@ class UsersController < ApplicationController
     session[:user_id] = nil
     @new = User.new
   end
-
 #登録を実行
   def create
     @user = User.new(user_params)
