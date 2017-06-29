@@ -8,7 +8,7 @@
       <%= form_for @plan, :url => plans_update_path, :html => {:method => "put"} do |i| %>
         <p id="edit_title">
           <%= i.label '[予定]' %><br>
-          <%= i.text_field 'title' %>
+          <%= i.text_field 'title', :maxlength => 100 %>
         </p>
         <p id="edit_start">
           <%= i.label '[開始時間]' %><br>
