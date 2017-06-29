@@ -13,25 +13,24 @@ class UsersController < ApplicationController
     session[:user_id] = nil
     @new = User.new
   end
-
 #登録を実行
   def create
     @user = User.new(user_params)
     @check = User.find_by login_id: (params[:user][:login_id])
-    @params = params[:user]
-    if @params[:login_id].match(/^[ぁ-んァ-ン一-龥]/)
+    param = params[:user]
+    if param[:login_id].match(/^[ぁ-んァ-ン一-龥]/)
       redirect_to users_new_path, action: 'users_login', alert: "※IDは全角文字は使用できません。"
     else
       if @check != nil
         redirect_to  users_new_path, action: 'users_login', alert: "※既に存在するIDです。別のIDで登録してください。"
       else
-        if @params[:login_id] == ""
+        if param[:login_id] == ""
           redirect_to  users_new_path, action: 'users_login', alert: "※IDが入力させていません。"
-        elsif @params[:name] == ""
+        elsif param[:name] == ""
         redirect_to  users_new_path, action: 'users_login', alert: "※名前が入力させていません。"
-        elsif @params[:address] == ""
+        elsif param[:address] == ""
           redirect_to users_new_path, action: 'users_login', alert: "※住所が入力されていません。"
-        elsif @params[:password] == ""
+        elsif param[:password] == ""
           redirect_to users_new_path, action: 'users_login', alert: "※パスワードが入力させていません。"
         else
           @user.save
@@ -46,8 +45,8 @@ class UsersController < ApplicationController
   def check
     @user = User.find_by login_id: (params[:user][:login_id])
     if @user && @user.authenticate(params[:user][:password_digest])
-        session[:user_id] = @user.id
         redirect_to index_path
+        session[:user_id] = @user.id
     else
         redirect_to users_login_path, action: 'users_login', alert: "※ログインできませんでした。もう一度お確かめください。"
     end
