@@ -36,7 +36,6 @@ class UsersController < ApplicationController
         else
           @user.save
           session[:user_id] = @user.id
-          p session[:user_id]
           redirect_to index_path
         end
       end
