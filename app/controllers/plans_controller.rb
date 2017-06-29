@@ -1,11 +1,9 @@
 class PlansController < ApplicationController
   require 'xmlsimple'
-  tenki_url = "http://api.openweathermap.org/data/2.5/forecast"
-  search_url = "http://public.dejizo.jp/NetDicV09.asmx/SearchDicItemLite"
-  get_url = "http://public.dejizo.jp/NetDicV09.asmx/GetDicItemLite"
 
 #カレンダーページ
   def index
+  tenki_url = "http://api.openweathermap.org/data/2.5/forecast"
     if res = login_check
       redirect_to root_path
     else
@@ -18,14 +16,14 @@ class PlansController < ApplicationController
       end
       @user_name = User.find(@user_id).name
       address = user.address
-      res = Faraday.get $tenki_url, {q: address, APPID: "c82b64efba2a36c7dc188c410a386457",cnt: 5}
+      res = Faraday.get tenki_url, {q: address, APPID: "c82b64efba2a36c7dc188c410a386457",cnt: 5}
       tenkis = JSON.parse(res.body)
       tenkis["list"].each do |tenki|
         tenki["weather"].each do |weather|
           @weather_icons.push(weather["icon"])
         end
       end
-      @lenght = 1
+      @length = 1
 
       #plansのデータで一番大きいID + 1を取得
       if Plan.exists?
@@ -157,6 +155,8 @@ class PlansController < ApplicationController
 
 #辞書ページ
   def dictionary
+  get_url = "http://public.dejizo.jp/NetDicV09.asmx/GetDicItemLite"
+  search_url = "http://public.dejizo.jp/NetDicV09.asmx/SearchDicItemLite"
     if res = login_check
       redirect_to root_path
     else
@@ -167,7 +167,7 @@ class PlansController < ApplicationController
       if key == nil
         @result_text = "ここに検索結果が表示されます"
       else
-        result = Faraday.get $search_url, {
+        result = Faraday.get search_url, {
                                                 Dic: use,
                                                 Word: key,
                                                 Scope: "HEADWORD",
@@ -182,7 +182,7 @@ class PlansController < ApplicationController
           @result_text = "該当結果はありません"
         else
           id = hash["SearchDicItemResult"]["TitleList"]["DicItemTitle"]["ItemID"]
-          result = Faraday.get $get_url,{
+          result = Faraday.get get_url,{
                                           Dic: use,
                                           Item: id,
                                           Loc: "",
