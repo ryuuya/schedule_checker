@@ -46,8 +46,8 @@ class UsersController < ApplicationController
   def check
     @user = User.find_by login_id: (params[:user][:login_id])
     if @user && @user.authenticate(params[:user][:password_digest])
-        redirect_to index_path
         session[:user_id] = @user.id
+        redirect_to index_path
     else
         redirect_to users_login_path, action: 'users_login', alert: "※ログインできませんでした。もう一度お確かめください。"
     end
